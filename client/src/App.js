@@ -9,6 +9,8 @@ import HomePage from './pages/HomePage'
 import Header from './pages/Header'
 import SignInForm from './pages/SignInForm'
 import Inventory from './pages/Inventory'
+import SignUpForm from './pages/SignUpForm'
+
 
 //grab the validate function from the api.js to use 
 import {validate} from './services/api'
@@ -34,8 +36,8 @@ class App extends Component {
   //update sign in since it was expecting a string now it will be getting a little object with username and id
   signin = (user) => { 
     this.setState({ username: user.username })
-    this.props.history.push('/inventory')
     localStorage.setItem('token', user.token) // add token
+    this.props.history.push('/inventory')
   }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -83,6 +85,7 @@ signout = () => {
           <Route exact path='/' component={HomePage} />
           <Route path='/signin' component={props => <SignInForm signin={signin} {...props}/>} />
           <Route path='/inventory' component={props => <Inventory username={username} {...props}/> } />
+          <Route path='/signup' component={props => <SignUpForm signin={signin} {...props}/>} />
           <Route component={() => <h1>Page not found.</h1>} />
         </Switch>
       </div>

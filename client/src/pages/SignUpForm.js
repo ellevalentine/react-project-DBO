@@ -4,18 +4,20 @@
  
 import React from 'react'
 
-import TextField from '@material-ui/core/TextField'
+// import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
-import { signin } from '../services/api'
+// import { signin } from '../services/api'
 // import { Link } from 'react-router-dom'
+import { createUser } from '../services/api'
+
 
 
 //------------------------------------------------------------------------------------------------------------------
 // SIGN IN FORM CLASS
 //------------------------------------------------------------------------------------------------------------------
  
-class SignInForm extends React.Component {
+class SignUpForm extends React.Component {
 
 // inital state
 //------------------------------------------------------------------------------------------------------------------  
@@ -24,58 +26,54 @@ class SignInForm extends React.Component {
     password: ''
   }
 
-// handle submit function (signin)
-//------------------------------------------------------------------------------------------------------------------
-  handleSubmit = () => {
-    signin(this.state.username, this.state.password) // this signin function will return a promise
-    .then( data => {
-      if (data.error){
-        alert(data.error)
-      } else { 
-        // debugger - use to check what data was been passed
-        this.props.signin(data)
-      }
-    })
-    // console.log(this.state)
+  handleSubmit = event => {
+  event.preventDefault()
+  
+  // let name = event.target.username.value
+  // let passord = event.target.password.value
+
+  createUser(event.target.username.value, event.target.password.value)
+ 
+
+    
   }
 
-// handle chaneg function 
-//------------------------------------------------------------------------------------------------------------------
-//change the state to the users name that has just logged in 
-handleChange = event =>
-    this.setState({ [event.target.name]: event.target.value })
 
 // render component
 //------------------------------------------------------------------------------------------------------------------
   render () {
-    const { username, password } = this.state
-    const { handleChange, handleSubmit } = this
+    // const { username, password } = this.state
+    const { handleSubmit } = this
 
     return (
-      <div>
-        <TextField
-          id='usernameInput'
-          label='Username'
-          value={username}
-          onChange={handleChange}
+      <div className="Inline" >
+        <h3>Sign Up:</h3> <br/>
+        <hr/>
+        <p>Please enter a Username:</p>
+
+        <form onSubmit={handleSubmit}>
+        <input
           margin='normal'
           name='username'
         />
+        <hr/>
         <br />
-        <TextField
-          id='passwordInput'
-          label='Password'
-          value={password}
-          onChange={handleChange}
-          margin='normal'
+        <hr/>
+        <p>Please enter a Password:</p>
+        <input
           name='password'
           type='password'
         />
+
+        <hr/>
         <br />
-        <Button onClick={handleSubmit} variant='contained' color='primary'>
+        <Button type="submit" variant='contained' color='primary'>
           SUBMIT
         </Button>
-       
+
+        </form>
+      
+    
       </div>
     )
   }
@@ -86,4 +84,4 @@ handleChange = event =>
 //------------------------------------------------------------------------------------------------------------------
  
 
-export default SignInForm
+export default SignUpForm
