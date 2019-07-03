@@ -29,11 +29,15 @@ class SignUpForm extends React.Component {
   handleSubmit = event => {
   event.preventDefault()
   
+  alert("User added")
   // let name = event.target.username.value
   // let passord = event.target.password.value
 
   createUser(event.target.username.value, event.target.password.value)
- 
+
+  this.props.history.push('/signin')
+
+
 
     
   }

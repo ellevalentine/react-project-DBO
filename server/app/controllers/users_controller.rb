@@ -80,5 +80,11 @@ end
     
     end 
 
+    def createItem 
+        byebug
+    end 
+
+
+
 
 end
