@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom'
 const HomePage = props =>
   <div>
     {/* <h1>Home page!</h1> */}
-    <Link to='/signin'>SignIn</Link> | <Link to='/signup'>SignUp</Link> 
+    {/* <Link to='/signin'>SignIn</Link> | <Link to='/signup'>SignUp</Link>  */}
   </div>
 
 //------------------------------------------------------------------------------------------------------------------
