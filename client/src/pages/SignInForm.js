@@ -60,6 +60,7 @@ handleChange = event =>
           onChange={handleChange}
           margin='normal'
           name='username'
+          required
         />
         <br />
         <TextField
@@ -70,6 +71,7 @@ handleChange = event =>
           margin='normal'
           name='password'
           type='password'
+          required
         />
         <br />
         <Button onClick={handleSubmit} variant='contained' color='primary'>

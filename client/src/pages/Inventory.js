@@ -9,6 +9,12 @@ import Item from '../components/Item'
 
 import {getInventory} from '../services/api'
 
+import FloatingActionButtonZoom from '../components/accountButtons'
+
+//---------------------
+
+
+
 //------------------------------------------------------------------------------------------------------------------
 // INVENTORY CLASS
 //------------------------------------------------------------------------------------------------------------------
@@ -67,8 +73,22 @@ class Inventory extends React.Component {
     const { inventory } = this.state
 
     return (
+
+
+
       <div style={this.style} className='user-list'>
-        <h3>Here's your inventory:</h3>
+        <h3>Welcome back, {this.props.username}!</h3>
+
+        <FloatingActionButtonZoom/>
+
+        <button className="button" >Current Account</button>
+
+        <button>Saving Account</button>
+
+        <button>Stocks Account</button>
+
+
+
         { inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
         {
           inventory.map(item =>
