@@ -8,6 +8,12 @@ Rails.application.routes.draw do
 
   get '/validate', to: 'users#validate'
 
+  get '/transactions', to: 'transactions#index'
+
+  get '/allstocks', to: 'allstocks#index'
+
+  get '/savingpots', to: 'saving_pots#index'
+
   get '/inventory', to: 'users#inventory'
 
   post '/signup', to: 'users#signup'
