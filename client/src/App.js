@@ -15,6 +15,10 @@ import SignUpForm from './pages/SignUpForm'
 //grab the validate function from the api.js to use 
 import {validate} from './services/api'
 
+import {getTransactions} from './services/api'
+import {getSavingPots} from './services/api'
+
+
 import './App.css'
 
 //------------------------------------------------------------------------------------------------------------------
@@ -26,18 +30,51 @@ class App extends Component {
 // initial state
 //------------------------------------------------------------------------------------------------------------------
   state = { // this is the initial state and when someone signsin this will be updated by the setState below
-    username:''
+    username:'',
+    user:{},
+    transactions:[],
+    savingPots:[]
   }
 //------------------------------------------------------------------------------------------------------------------
+//Transations
+
+fetchTransactions = (user) => {
+
+  getSavingPots().then(data => this.filterPots(data))
+getTransactions().then(data => this.filterTrans(data))
+
+}
+
+filterTrans = (trans) => {
+  const userTrans = trans.filter(tran => tran.user_id === this.state.user.id)
+
+  this.setState({transactions: userTrans})
+}
+
+
+filterPots = (pots) => {
+  
+  const userPots = pots.filter(pot => pot.user_id === this.state.user.id)
+
+  this.setState({savingPots: userPots})
+}
+
+
+
+
+
 
 // sign in
 //------------------------------------------------------------------------------------------------------------------
   // only one user can be signed in at once so when they are the username will be replaced eachtime
   //update sign in since it was expecting a string now it will be getting a little object with username and id
   signin = (user) => { 
+    
+    this.setState({user: user})
     this.setState({ username: user.username })
     localStorage.setItem('token', user.token) // add token
     this.props.history.push('/inventory')
+    this.fetchTransactions(user)
   }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -76,7 +113,7 @@ signout = () => {
 //------------------------------------------------------------------------------------------------------------------
   render() {
     const {signin, signout} = this
-    const {username} = this.state // so we can pass the username down to the header to welcome the user
+    const {username, transactions, savingPots} = this.state // so we can pass the username down to the header to welcome the user
 
     return (
       <div className="App">
@@ -84,7 +121,7 @@ signout = () => {
         <Switch> 
           <Route exact path='/' component={HomePage} />
           <Route path='/signin' component={props => <SignInForm signin={signin} {...props}/>} />
-          <Route path='/inventory' component={props => <Inventory username={username} {...props}/> } />
+          <Route path='/inventory' component={props => <Inventory savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
           <Route path='/signup' component={props => <SignUpForm signin={signin} {...props}/>} />
           <Route component={() => <h1>Page not found.</h1>} />
         </Switch>

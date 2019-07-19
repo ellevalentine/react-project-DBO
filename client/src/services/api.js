@@ -64,9 +64,39 @@ export function createUser(username, password){
 }
 
 //------------------------------------------------------------------------------------------------------------------
+// Transactions get request 
+//------------------------------------------------------------------------------------------------------------------
+ 
+
+export function getTransactions(){ 
+
+    return fetch('http://localhost:3000/transactions', {
+         headers: {
+            'Content-Type': 'application/json'
+            }
+        }).then(r => r.json())
+
+}
+
+//------------------------------------------------------------------------------------------------------------------
+// Saving pots get request 
+//------------------------------------------------------------------------------------------------------------------
+ 
+
+export function getSavingPots(){ 
+
+    return fetch('http://localhost:3000/savingpots', {
+         headers: {
+            'Content-Type': 'application/json'
+            }
+        }).then(r => r.json())
+
+}
+
+//------------------------------------------------------------------------------------------------------------------
 // EXPORT
 //------------------------------------------------------------------------------------------------------------------
 
- export default {signin, validate, getInventory} 
+ export default {signin, validate, getInventory, getTransactions, getSavingPots} 
 
  // we will be able to import validate by name or we can impoet the who api.js - this just gives us more options

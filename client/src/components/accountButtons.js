@@ -13,6 +13,17 @@ import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { green } from '@material-ui/core/colors';
+import Button from '@material-ui/core/Button'
+
+
+import ReactVirtualizedTable from '../components/eachTransaction'
+import TranDashboard from "../components/TranDashboard";
+import OverAllChartsPage from "../components/TransPieChart"
+import MapPots from "../components/mapPots"
+import NewPotDashBoard from "../components/NewPotDashBoard";
+
+
+
 
 function TabContainer(props) {
   const { children, dir } = props;
@@ -32,7 +43,7 @@ TabContainer.propTypes = {
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    width: 500,
+    width: 1000,
     position: 'relative',
     minHeight: 200,
   },
@@ -50,10 +61,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function FloatingActionButtonZoom() {
+export default function FloatingActionButtonZoom(props) {
+    
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+
+    const amount = props.userTransaction
+
+    const allPots  = props.userPots
+
+    
+
 
   function handleChange(event, newValue) {
     setValue(newValue);
@@ -72,22 +91,23 @@ export default function FloatingActionButtonZoom() {
     {
       color: 'primary',
       className: classes.fab,
-      icon: <AddIcon />,
+      icon: "",
       label: 'Add',
     },
     {
       color: 'secondary',
       className: classes.fab,
-      icon: <EditIcon />,
+      icon: "",
       label: 'Edit',
     },
     {
       color: 'inherit',
       className: clsx(classes.fab, classes.fabGreen),
-      icon: <UpIcon />,
+      icon: "",
       label: 'Expand',
     },
   ];
+
 
   return (
     <div className={classes.root}>
@@ -95,13 +115,13 @@ export default function FloatingActionButtonZoom() {
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
+          indicatorColor="secondary"
+          textColor="secondary"
           variant="fullWidth"
         >
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-          <Tab label="Item Three" />
+          <Tab label="Current" />
+          <Tab label="Savings" />
+          <Tab label="Portfolio" />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -109,26 +129,43 @@ export default function FloatingActionButtonZoom() {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabContainer dir={theme.direction}>Item One</TabContainer>
-        <TabContainer dir={theme.direction}>Item Two</TabContainer>
-        <TabContainer dir={theme.direction}>Item Three</TabContainer>
+   
+        <TabContainer dir={theme.direction}> 
+            <div className='addButton'>
+            <TranDashboard/> <br/>
+            </div>
+            Transactions:
+            <br/>
+         <ReactVirtualizedTable rows={props.userTransaction}/>
+           
+            <br/>
+            <hr/>
+            <OverAllChartsPage />
+      
+
+          </TabContainer>
+
+        <TabContainer dir={theme.direction}>
+        
+    
+    <div className='addButton'>
+      <NewPotDashBoard/>
+      <br/>
+      <br/>
+      </div>
+    <hr/>
+    <div>
+      <MapPots userPots={props.userPots} />
+      
+    </div>
+          
+
+          </TabContainer>
+
+        <TabContainer dir={theme.direction}>Stocks Account</TabContainer>
+
       </SwipeableViews>
-      {fabs.map((fab, index) => (
-        <Zoom
-          key={fab.color}
-          in={value === index}
-          timeout={transitionDuration}
-          style={{
-            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
-          }}
-          unmountOnExit
-        >
-          <Fab aria-label={fab.label} className={fab.className} color={fab.color}>
-            {fab.icon}
-          </Fab>
-        </Zoom>
-      ))}
+    
     </div>
   );
 }
-

@@ -1,0 +1,3 @@
+class Allstock < ApplicationRecord
+    
+end
