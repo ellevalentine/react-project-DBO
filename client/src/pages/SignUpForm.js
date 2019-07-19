@@ -46,7 +46,7 @@ class SignUpForm extends React.Component {
     const { handleSubmit } = this
 
     return (
-      <div className="Inline" >
+      <div className="signInform" >
         <h3>Sign Up:</h3> <br/>
         <hr/>
         <p>Please enter a Username:</p>
@@ -72,6 +72,12 @@ class SignUpForm extends React.Component {
         </Button>
 
         </form>
+
+        <img
+              alt="oh no!"
+              className="signInPicture"
+              src="http://www.drinkingwaterfountains.co.uk/wp/wp-content/uploads/2018/04/installation-service.jpg"
+            />
       
     
       </div>

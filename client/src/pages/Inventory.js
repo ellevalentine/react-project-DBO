@@ -24,7 +24,8 @@ class Inventory extends React.Component {
 // inital state  
 //------------------------------------------------------------------------------------------------------------------
   state = {
-    inventory: []
+    inventory: [],
+    userTransaction: this.props.transactions
   }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -70,7 +71,7 @@ class Inventory extends React.Component {
 // render component
 //------------------------------------------------------------------------------------------------------------------
   render () {
-    const { inventory } = this.state
+    const { inventory, userTransaction} = this.state
 
     return (
 
@@ -79,22 +80,13 @@ class Inventory extends React.Component {
       <div style={this.style} className='user-list'>
         <h3>Welcome back, {this.props.username}!</h3>
 
-        <FloatingActionButtonZoom/>
+        <FloatingActionButtonZoom userTransaction={userTransaction} userPots={this.props.savingPots}/>
 
-        <button className="button" >Current Account</button>
-
-        <button>Saving Account</button>
-
-        <button>Stocks Account</button>
-
-
-
-        { inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
-        {
-          inventory.map(item =>
-            <Item key={item.id} item={item} />
-          )
-        }
+        <img
+              alt="oh no!"
+              className="signInPicture"
+              src="http://www.drinkingwaterfountains.co.uk/wp/wp-content/uploads/2018/04/installation-service.jpg"
+            />
       </div>
     )
   }
