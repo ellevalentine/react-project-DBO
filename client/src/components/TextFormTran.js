@@ -90,7 +90,8 @@ export default function FilledInputAdornments() {
     <br/>
       <hr/>
 
-<from>
+  <from onsubmit={console.log("hello")}>
+
       <TextField
         id="filled-simple-start-adornment"
         className={clsx(classes.margin, classes.textField)}
@@ -101,6 +102,7 @@ export default function FilledInputAdornments() {
         }}
       />
       <br/>
+
       <TextField
         select
         className={clsx(classes.margin, classes.textField)}
@@ -118,6 +120,8 @@ export default function FilledInputAdornments() {
           </MenuItem>
         ))}
       </TextField>
+
+
       <br/>
 
       <TextField
@@ -131,7 +135,7 @@ export default function FilledInputAdornments() {
           startAdornment: <InputAdornment position="start">£</InputAdornment>,
         }}
       />
-            <br/>
+      <br/>
 
       <TextField
         id="filled-adornment-weight"
@@ -149,9 +153,11 @@ export default function FilledInputAdornments() {
       <Button variant="outlined" color="secondary" type="button">
           Submit Transaction
       </Button>
+      
       <br/>
       <hr/>
       <br/>
+
       </from>
     </div>
   );

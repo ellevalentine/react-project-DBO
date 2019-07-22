@@ -4,10 +4,7 @@ import ReactDOM from "react-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
 import Dialog from '@material-ui/core/Dialog';
-
-
 import Button from '@material-ui/core/Button'
-
 import NewPotForm from "../components/NewPotModal"
 
 
@@ -30,7 +27,7 @@ class NewPotDashBoard extends Component {
     
           
           <Dialog open={this.state.show} onClose={ () => {this.setState({show: false})}}>
-            <NewPotForm />
+            <NewPotForm user={this.props.user} />
           </Dialog>
           <Button variant="outlined" color="secondary" type="button" onClick={this.handleClick}>
             Add Savings Pot

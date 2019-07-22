@@ -45,11 +45,11 @@ class Inventory extends React.Component {
   setInventory = () => {
     getInventory()
     .then( data => {
-      if (data.error){
-        alert (data.error)
-      } else {
+      // if (data.error){
+      //   alert (data.error)
+      // } else {
         this.setState({inventory: data})
-      }
+      // }
      } )
     }
 
@@ -80,7 +80,7 @@ class Inventory extends React.Component {
       <div style={this.style} className='user-list'>
         <h3>Welcome back, {this.props.username}!</h3>
 
-        <FloatingActionButtonZoom userTransaction={userTransaction} userPots={this.props.savingPots}/>
+        <FloatingActionButtonZoom user={this.props.user} userTransaction={userTransaction} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
 
         <img
               alt="oh no!"

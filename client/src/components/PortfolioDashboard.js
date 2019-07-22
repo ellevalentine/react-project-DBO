@@ -8,12 +8,11 @@ import Dialog from '@material-ui/core/Dialog';
 
 import Button from '@material-ui/core/Button'
 
-import TransactionDetails from "../components/InsideTransModal"
 
 
 
 
-class TranDashboard extends Component {
+class PortfolioDashBoard extends Component {
 
   state = { show: false };
 
@@ -30,11 +29,14 @@ class TranDashboard extends Component {
     
           
           <Dialog open={this.state.show} onClose={ () => {this.setState({show: false})}}>
-            <TransactionDetails user={this.props.user} />
+            <p> helloooooooooooo </p>
           </Dialog>
-          <Button variant="outlined" color="secondary" type="button" onClick={this.handleClick}>
-            Add Transaction
+          <Button variant="outlined" color="success" type="button" onClick={this.handleClick}>
+            View Portfolio 
           </Button>
+          <br/>
+          <br/>
+          <hr/>
         </main>
     );
   }
@@ -45,7 +47,4 @@ document.body.appendChild(container);
 // ReactDOM.render(<Dashboard />, container);
 
 
-export default TranDashboard
-
-
-
+export default PortfolioDashBoard

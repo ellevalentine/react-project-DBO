@@ -61,7 +61,7 @@ end
     def inventory
         user = get_current_user # verify the user by using our helper method 
         if user  # if the user exists then we will render the users items -
-            render json: user.items # we have access to user.items since we set out the realtionship for user to have many items 
+            render json: user # we have access to user.items since we set out the realtionship for user to have many items 
         else # if the user doesnt exsist then show an error
             render json: {error: 'Invalid Token'}, status: 400
         end 

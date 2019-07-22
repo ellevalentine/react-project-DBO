@@ -7,8 +7,7 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
-// import { createPot } from '../services/api'
-
+import { createPot } from '../services/api'
 
 // import { Link } from 'react-router-dom'
 
@@ -22,23 +21,10 @@ class NewPotForm extends React.Component {
 // inital state
 //------------------------------------------------------------------------------------------------------------------  
   state = {
-    name: '',
-    description: '',
-    goal: '',
-    date: '',
-    userID: this.props.userID
+    userID: this.props.user.id
   }
 
 
-// handle change function 
-//------------------------------------------------------------------------------------------------------------------
-//change the state to the users name that has just logged in 
-handleChange = event => { 
-    this.setState({ name: event.target.name.value })
-    this.setState({ description: event.target.description.value })
-    this.setState({ goal: event.target.goal.value })
-    this.setState({ date: event.target.date.value })
-}
 
 // handle submit function 
 //------------------------------------------------------------------------------------------------------------------
@@ -48,7 +34,7 @@ handleSubmit = event => {
     
     alert("Pot added")
   
-    // createPot(event.target.name.value, event.target.description.value, event.target.goal.value, event.target.date.value, this.state.userID )
+    createPot(event.target.name.value, event.target.description.value, event.target.goal.value, event.target.date.value, this.state.userID )
     // .then( this.props.setInventory())
   
     // this.props.history.push('/signin')
