@@ -14,9 +14,12 @@ import SignUpForm from './pages/SignUpForm'
 
 //grab the validate function from the api.js to use 
 import {validate} from './services/api'
-
 import {getTransactions} from './services/api'
 import {getSavingPots} from './services/api'
+import {getAllStocks} from './services/api'
+
+
+
 
 
 import './App.css'
@@ -33,19 +36,23 @@ class App extends Component {
     username:'',
     user:{},
     transactions:[],
-    savingPots:[]
+    savingPots:[],
+    allstocks:[]
   }
 //------------------------------------------------------------------------------------------------------------------
 //Transations
 
-fetchTransactions = (user) => {
+fetchTransactions = () => {
 
   getSavingPots().then(data => this.filterPots(data))
-getTransactions().then(data => this.filterTrans(data))
+  getTransactions().then(data => this.filterTrans(data))
+  getAllStocks().then( data => this.setState({allstocks: data}))
 
 }
 
 filterTrans = (trans) => {
+  debugger
+  console.log(this.state.user)
   const userTrans = trans.filter(tran => tran.user_id === this.state.user.id)
 
   this.setState({transactions: userTrans})
@@ -74,7 +81,6 @@ filterPots = (pots) => {
     this.setState({ username: user.username })
     localStorage.setItem('token', user.token) // add token
     this.props.history.push('/inventory')
-    this.fetchTransactions(user)
   }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -97,15 +103,23 @@ signout = () => {
  componentDidMount(){
    if (localStorage.token){
      validate()
-      .then(data => {
-        if (data.error){
-          alert(data.error)
-        } else{
+      .then(
+        data => {
+        // if (data.error){
+        //   alert(data.error)
+        // } else
+        // {
           this.signin(data)
-        }
-      })
+        // }
+      }
+      )
+
+    this.fetchTransactions()
+
+      
 
    }
+
  }
  //------------------------------------------------------------------------------------------------------------------
 
@@ -113,17 +127,17 @@ signout = () => {
 //------------------------------------------------------------------------------------------------------------------
   render() {
     const {signin, signout} = this
-    const {username, transactions, savingPots} = this.state // so we can pass the username down to the header to welcome the user
+    const {username, transactions, savingPots, allstocks, user} = this.state // so we can pass the username down to the header to welcome the user
 
     return (
       <div className="App">
         <Header username={username} signout={signout}/> 
         <Switch> 
           <Route exact path='/' component={HomePage} />
-          <Route path='/signin' component={props => <SignInForm signin={signin} {...props}/>} />
-          <Route path='/inventory' component={props => <Inventory savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
-          <Route path='/signup' component={props => <SignUpForm signin={signin} {...props}/>} />
-          <Route component={() => <h1>Page not found.</h1>} />
+          <Route path='/signin' render={props => <SignInForm signin={signin} {...props}/>} />
+          <Route path='/inventory' render={props => <Inventory user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
+          <Route path='/signup' render={props => <SignUpForm signin={signin} {...props}/>} />
+          <Route render={() => <h1>Page not found.</h1>} />
         </Switch>
       </div>
     )

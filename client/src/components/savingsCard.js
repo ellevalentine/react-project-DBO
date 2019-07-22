@@ -9,6 +9,10 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import PotDashboard from "../components/PotsDashboard"
+import DeletePotDashboard from "../components/DeleteSavingPot"
+
+
+
 
 const useStyles = makeStyles({
   card: {
@@ -52,7 +56,9 @@ export default function ImgMediaCard(props) {
       </CardActionArea>
       <CardActions>
         
-      <PotDashboard />
+      <PotDashboard/>
+      <DeletePotDashboard item={props.item} />
+
    
       </CardActions>
     </Card>

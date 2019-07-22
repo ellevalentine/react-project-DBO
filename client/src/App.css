@@ -108,6 +108,19 @@ a:active {
     margin-bottom: 20px
 }
 
+.stockCards {
+  
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  flex-wrap: wrap;
+  border: 10px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: white;
+  background-color: black
+}
+
 .potDetailImage {
 
   display: flex;

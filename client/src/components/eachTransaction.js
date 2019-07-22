@@ -124,7 +124,20 @@ function createData(id, company, amount, date, spendingSection) {
 
 
 export default function ReactVirtualizedTable({rows}) {
-    
+  
+
+  const totalSpendingArray = rows.map( row => ( row.amount ))
+
+  // const spendingSum = totalSpendingArray.reduce(myFunc)
+
+  function myFunc(total, num) {
+    return total + num;
+  }
+
+
+
+  // debugger
+
   return (
     <Paper style={{ height: 400, width: '100%' }}>
       <VirtualizedTable

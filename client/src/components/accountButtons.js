@@ -21,7 +21,8 @@ import TranDashboard from "../components/TranDashboard";
 import OverAllChartsPage from "../components/TransPieChart"
 import MapPots from "../components/mapPots"
 import NewPotDashBoard from "../components/NewPotDashBoard";
-
+import SimpleCard from "../components/stockCard"
+import PortfolioDashBoard from "../components/PortfolioDashboard"
 
 
 
@@ -108,6 +109,8 @@ export default function FloatingActionButtonZoom(props) {
     },
   ];
 
+  
+
 
   return (
     <div className={classes.root}>
@@ -132,11 +135,11 @@ export default function FloatingActionButtonZoom(props) {
    
         <TabContainer dir={theme.direction}> 
             <div className='addButton'>
-            <TranDashboard/> <br/>
+            <TranDashboard user={props.user} /> <br/>
             </div>
             Transactions:
             <br/>
-         <ReactVirtualizedTable rows={props.userTransaction}/>
+         <ReactVirtualizedTable transactions={props.userTransaction} rows={props.userTransaction}/>
            
             <br/>
             <hr/>
@@ -149,7 +152,7 @@ export default function FloatingActionButtonZoom(props) {
         
     
     <div className='addButton'>
-      <NewPotDashBoard/>
+      <NewPotDashBoard user={props.user}/>
       <br/>
       <br/>
       </div>
@@ -162,7 +165,18 @@ export default function FloatingActionButtonZoom(props) {
 
           </TabContainer>
 
-        <TabContainer dir={theme.direction}>Stocks Account</TabContainer>
+        <TabContainer dir={theme.direction}>
+        Stocks Account
+        <div className='addButton'> 
+           <PortfolioDashBoard />
+           <br/>
+           <br/>
+        </div> 
+
+
+        {props.allstocks.map( stock => <SimpleCard stock={stock} /> ) }
+
+        </TabContainer>
 
       </SwipeableViews>
     
