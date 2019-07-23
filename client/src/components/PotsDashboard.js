@@ -22,7 +22,7 @@ class PotDashboard extends Component {
           <br/>
           
           <Dialog open={this.state.show} onClose={ () => {this.setState({show: false})}}>
-          <PotDetails/>
+          <PotDetails item={this.props.item}/>
           </Dialog>
           <button type="button" onClick={this.handleClick}>
             More Details

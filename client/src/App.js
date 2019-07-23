@@ -15,7 +15,7 @@ import SignUpForm from './pages/SignUpForm'
 //grab the validate function from the api.js to use 
 import {validate} from './services/api'
 import {getTransactions} from './services/api'
-import {getSavingPots} from './services/api'
+import {getUsers} from './services/api'
 import {getAllStocks} from './services/api'
 
 
@@ -37,50 +37,31 @@ class App extends Component {
     user:{},
     transactions:[],
     savingPots:[],
-    allstocks:[]
+    allstocks:[],
+    test: []
   }
 //------------------------------------------------------------------------------------------------------------------
-//Transations
-
-fetchTransactions = () => {
-
-  getSavingPots().then(data => this.filterPots(data))
-  getTransactions().then(data => this.filterTrans(data))
-  getAllStocks().then( data => this.setState({allstocks: data}))
-
-}
-
-filterTrans = (trans) => {
-  debugger
-  console.log(this.state.user)
-  const userTrans = trans.filter(tran => tran.user_id === this.state.user.id)
-
-  this.setState({transactions: userTrans})
-}
-
-
-filterPots = (pots) => {
-  
-  const userPots = pots.filter(pot => pot.user_id === this.state.user.id)
-
-  this.setState({savingPots: userPots})
-}
-
-
-
-
-
-
 // sign in
 //------------------------------------------------------------------------------------------------------------------
   // only one user can be signed in at once so when they are the username will be replaced eachtime
   //update sign in since it was expecting a string now it will be getting a little object with username and id
   signin = (user) => { 
     
-    this.setState({user: user})
-    this.setState({ username: user.username })
+    getAllStocks().then( data => 
+      {
+        this.setState({allstocks: data, user: user, transactions: user.transactions, savingPots: user.saving_pots, username: user.username}, () => {
+          this.props.history.push('/inventory')
+        })
+      }
+    )
+    // this.setState({transactions: user.transactions})
+    // this.setState({savingPots: user.saving_pots})
+    // this.setState({allstocks: user.allstocks})
+    // this.setState({ username: user.username })
+
     localStorage.setItem('token', user.token) // add token
-    this.props.history.push('/inventory')
+    
+
   }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -114,12 +95,7 @@ signout = () => {
       }
       )
 
-    this.fetchTransactions()
-
-      
-
    }
-
  }
  //------------------------------------------------------------------------------------------------------------------
 
@@ -134,10 +110,10 @@ signout = () => {
         <Header username={username} signout={signout}/> 
         <Switch> 
           <Route exact path='/' component={HomePage} />
-          <Route path='/signin' render={props => <SignInForm signin={signin} {...props}/>} />
-          <Route path='/inventory' render={props => <Inventory user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
-          <Route path='/signup' render={props => <SignUpForm signin={signin} {...props}/>} />
-          <Route render={() => <h1>Page not found.</h1>} />
+          <Route path='/signin' component={props => <SignInForm signin={signin} {...props}/>} />
+          <Route path='/inventory' component={props => <Inventory user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
+          <Route path='/signup' component={props => <SignUpForm signin={signin} {...props}/>} />
+          <Route component={() => <h1>Page not found.</h1>} />
         </Switch>
       </div>
     )

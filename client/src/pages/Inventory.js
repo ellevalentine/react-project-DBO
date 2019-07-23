@@ -25,7 +25,7 @@ class Inventory extends React.Component {
 //------------------------------------------------------------------------------------------------------------------
   state = {
     inventory: [],
-    userTransaction: this.props.transactions
+
   }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ class Inventory extends React.Component {
       <div style={this.style} className='user-list'>
         <h3>Welcome back, {this.props.username}!</h3>
 
-        <FloatingActionButtonZoom user={this.props.user} userTransaction={userTransaction} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
+        <FloatingActionButtonZoom user={this.props.user} userTransaction={this.props.transactions} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
 
         <img
               alt="oh no!"

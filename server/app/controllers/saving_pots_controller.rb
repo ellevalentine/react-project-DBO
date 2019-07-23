@@ -1,9 +1,9 @@
 class SavingPotsController < ApplicationController
     
-    def index
-        @SavingPots=SavingPot.all 
-        render json: @SavingPots
-    end 
+    # def index
+    #     @SavingPots=SavingPot.all 
+    #     render json: @SavingPots
+    # end 
 
     def createPot
 
@@ -14,7 +14,7 @@ class SavingPotsController < ApplicationController
 
     def show
 
-        @SavingPot = SavingPot.find(params[:id])
+        @SavingPot = SavingPot.find(params[:user_id])
         render json: @SavingPot
     
     end

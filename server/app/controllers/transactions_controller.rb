@@ -1,9 +1,9 @@
 class TransactionsController < ApplicationController
 
-    def index
-        @Transactions=Transaction.all 
-        render json: @Transactions
-    end 
+    # def index
+    #     @Transactions=Transaction.all 
+    #     render json: @Transactions
+    # end 
 
     # def show # to be able to just see one user at a time
 
