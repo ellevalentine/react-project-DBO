@@ -30,7 +30,7 @@ export default function ImgMediaCard(props) {
           component="img"
           alt="Contemplative Reptile"
           height="20"
-          image="https://camblab.info/wp/wp-content/uploads/2017/02/pool-water.jpg"
+          image={require('../components/water1.png')}
           title="Contemplative Reptile"
         />
         <CardContent>
@@ -56,7 +56,7 @@ export default function ImgMediaCard(props) {
       </CardActionArea>
       <CardActions>
         
-      <PotDashboard/>
+      <PotDashboard item={props.item} />
       <DeletePotDashboard item={props.item} />
 
    

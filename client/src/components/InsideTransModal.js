@@ -84,25 +84,22 @@ import {createTransaction} from "../services/api"
                 <br/>
 
                 <select name="category">
-                <option value="bills">Bills</option>
+                 <option value="bills">Bills</option>
                  <option value="subscriptions">Subscriptions</option>
                  <option selected value="food">Food</option>
                  <option value="travel">Travel</option>
                  <option value="phone">Phone</option>
                  <option value="holiday">Holiday</option>
                  <option value="retail">Retail</option>
-                 <option value="holiday">Holiday</option>
                  <option value="tech">Tech</option>
                  <option value="other">Other</option>
-
-
                 </select>
 
                 
                 <br />
                <br/>
                 <Button type="submit" variant='contained' color='secondary'>
-                  Category
+                  Submit Transaction
                 </Button>
         
                 </form>

@@ -31,7 +31,7 @@ def signin
     
     user = User.find_by(username: params[:username]) # grab a user by username
     if user && user.authenticate(params[:password])
-        render json: {username: user.username, token: issue_token({id: user.id}), id: user.id} # we do this so we dont get the whole user back but rather just the username and the token which we have access from all the helper methods 
+        render json: {username: user.username, token: issue_token({id: user.id}), id: user.id, balance: user.balance, transactions: user.transactions, saving_pots: user.saving_pots, userstocks: user.userstocks} # we do this so we dont get the whole user back but rather just the username and the token which we have access from all the helper methods 
     else
         render json: { error: 'Invalid Username/Password combination'}, status: 401 
     end
@@ -50,7 +50,7 @@ def validate
     # we can verify the user via our helper method current_user
     user = get_current_user
     if user 
-        render json: {username: user.username, token: issue_token({id: user.id})} # pass token
+        render json: {username: user.username, token: issue_token({id: user.id}), id: user.id, balance: user.balance, transactions: user.transactions, saving_pots: user.saving_pots, userstocks: user.userstocks} # we do this so we dont get the whole user back but rather just the username and the token which we have access from all the helper methods 
     else
         render json: {error: 'User not found'}, status: 404
     end 

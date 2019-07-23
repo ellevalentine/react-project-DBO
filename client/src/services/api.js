@@ -83,9 +83,9 @@ export function getTransactions(){
 //------------------------------------------------------------------------------------------------------------------
  
 
-export function getSavingPots(){ 
+export function getUsers(id){ 
 
-    return fetch('http://localhost:3000/savingpots', {
+    return fetch(`http://localhost:3000/users/${id}`, {
          headers: {
             'Content-Type': 'application/json'
             }
@@ -170,6 +170,6 @@ export function createPot(name, description, goal, date, id) {
 // EXPORT
 //------------------------------------------------------------------------------------------------------------------
 
- export default {signin, validate, getInventory, getTransactions, getSavingPots, getAllStocks, createTransaction, deleteSavingPot} 
+ export default {signin, validate, getInventory, getTransactions, getUsers, getAllStocks, createTransaction, deleteSavingPot} 
 
  // we will be able to import validate by name or we can impoet the who api.js - this just gives us more options

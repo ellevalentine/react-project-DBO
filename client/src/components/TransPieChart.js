@@ -8,10 +8,10 @@ class OverAllChartsPage extends React.Component {
     
   state = {
     dataPie: {
-      labels: ["Bills", "Subscriptions", "Food", "Travel", "Phone Contract", "Holidays", "Other"],
+      labels: ["Bills", "Subscriptions", "Food", "Travel", "Phone Contract", "Holidays", "Retail", "Tech", "Other"],
       datasets: [
         {
-          data: [ 10, 20, 30, 5, 20, 40, 10 ],
+          data: [ this.props.BillsAmounts, this.props.SubscriptionsAmounts, this.props.FoodAmounts, this.props.TravelAmounts, this.props.PhoneAmounts, this.props.HolidayAmounts, this.props.RetailAmounts, this.props.TechAmounts,  this.props.OtherAmounts   ],
           backgroundColor: [
             "#F7464A",
             "#46BFBD",
@@ -19,7 +19,9 @@ class OverAllChartsPage extends React.Component {
             "#5eff5a",
             "#a95aff",
             "#ffa95a",
-            "#ff5ab0"
+            "#ff5ab0",
+            "#FFF8DC",
+            "#8FBC8F"
           ],
           hoverBackgroundColor: [
             "#FF5A5E",
@@ -28,7 +30,9 @@ class OverAllChartsPage extends React.Component {
             "#5eff5a",
             "#a95aff",
             "#ffa95a",
-            "#ff5ab0"
+            "#ff5ab0",
+            "#FFF8DC",
+            "#8FBC8F",
           ]
         }
       ]
@@ -38,7 +42,7 @@ class OverAllChartsPage extends React.Component {
   render() {
     return (
       <MDBContainer>
-        <h3 className="mt-5">Total Spending: £ 0.00</h3>
+        <h3 className="mt-5">Total Spending: £ {this.props.TotalSpending}.00 </h3>
         <Pie data={this.state.dataPie} options={{ responsive: true }} />
       </MDBContainer>
     );
