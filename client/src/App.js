@@ -109,7 +109,7 @@ signout = () => {
       <div className="App">
         <Header username={username} signout={signout}/> 
         <Switch> 
-          <Route exact path='/' component={HomePage} />
+          <Route exact path='/' component={props => <HomePage user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } /> />
           <Route path='/signin' component={props => <SignInForm signin={signin} {...props}/>} />
           <Route path='/inventory' component={props => <Inventory user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
           <Route path='/signup' component={props => <SignUpForm signin={signin} {...props}/>} />
