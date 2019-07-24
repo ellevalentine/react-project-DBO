@@ -61,7 +61,7 @@ a:hover,
 a:active {
   text-decoration: none;
   color: #716f72;
-  position: relative;
+  /* position: relative; */
 }
 
 .navbar-link,
@@ -82,6 +82,12 @@ a:active {
 }
 
 .addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.HomepageCarousel {
   display: flex;
   align-items: center;
   justify-content: center

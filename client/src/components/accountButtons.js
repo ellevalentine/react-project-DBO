@@ -23,6 +23,10 @@ import MapPots from "../components/mapPots"
 import NewPotDashBoard from "../components/NewPotDashBoard";
 import SimpleCard from "../components/stockCard"
 import PortfolioDashBoard from "../components/PortfolioDashboard"
+import OverAllBarChart from "../components/OverAllBarChart"
+
+
+import CarouselPage from "../components/Carousel"
 
 
 
@@ -153,6 +157,7 @@ export default function FloatingActionButtonZoom(props) {
           textColor="secondary"
           variant="fullWidth"
         >
+          <Tab label="Overview" />
           <Tab label="Current" />
           <Tab label="Savings" />
           <Tab label="Portfolio" />
@@ -163,6 +168,14 @@ export default function FloatingActionButtonZoom(props) {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
+
+      <TabContainer >
+      <div className="HomepageCarousel">
+        <CarouselPage TotalSpending={sumOfAmounts} OtherAmounts={OtherAmounts} TechAmounts={TechAmounts} RetailAmounts={RetailAmounts} HolidayAmounts={HolidayAmounts} PhoneAmounts={PhoneAmounts} TravelAmounts={TravelAmounts} FoodAmounts={FoodAmounts} BillsAmounts={BillsAmounts} SubscriptionsAmounts={SubscriptionsAmounts}  />
+      </div>
+      </TabContainer>
+
+
    
         <TabContainer dir={theme.direction}> 
             <div className='addButton'>
@@ -172,11 +185,48 @@ export default function FloatingActionButtonZoom(props) {
             <br/>
 
          <ReactVirtualizedTable transactions={props.userTransaction} rows={props.userTransaction}/>
-           
-            <br/>
+      
+            <br>
+              {/* <form>
+
+               <select name="month">
+                 <option value="jan">Jan</option>
+                 <option value="feb">Feb</option>
+                 <option value="mar">Mar</option>
+                 <option value="apr">Apr</option>
+                 <option value="may">May</option>
+                 <option value="jun">Jun</option>
+                 <option value="jul">Jul</option>
+                 <option value="aug">Aug</option>
+                 <option value="sep">Sep</option>
+                 <option value="oct">Oct</option>
+                 <option value="nov">Nov</option>
+                 <option value="dec">Dec</option>
+                </select>
+                   <select name="year"> 
+                 <option value="bills">Bills</option>
+                 <option value="subscriptions">Subscriptions</option>
+                 <option selected value="food">Food</option>
+                 <option value="travel">Travel</option>
+                 <option value="phone">Phone</option>
+                 <option value="holiday">Holiday</option>
+                 <option value="retail">Retail</option>
+                 <option value="tech">Tech</option>
+                 <option value="other">Other</option>
+                </select>  */}
+            
+
+            </br>
             <hr/>
             <OverAllChartsPage TotalSpending={sumOfAmounts} OtherAmounts={OtherAmounts} TechAmounts={TechAmounts} RetailAmounts={RetailAmounts} HolidayAmounts={HolidayAmounts} PhoneAmounts={PhoneAmounts} TravelAmounts={TravelAmounts} FoodAmounts={FoodAmounts} BillsAmounts={BillsAmounts} SubscriptionsAmounts={SubscriptionsAmounts}  />
-      
+            <br/>
+            <hr/>
+            <OverAllBarChart TotalSpending={sumOfAmounts} OtherAmounts={OtherAmounts} TechAmounts={TechAmounts} RetailAmounts={RetailAmounts} HolidayAmounts={HolidayAmounts} PhoneAmounts={PhoneAmounts} TravelAmounts={TravelAmounts} FoodAmounts={FoodAmounts} BillsAmounts={BillsAmounts} SubscriptionsAmounts={SubscriptionsAmounts}  />
+
+            <br/>
+         
+
+          
 
           </TabContainer>
 

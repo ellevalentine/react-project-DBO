@@ -11,6 +11,9 @@ import {getInventory} from '../services/api'
 
 import FloatingActionButtonZoom from '../components/accountButtons'
 
+// import AllStats from "../components/OverAllStats"
+
+
 //---------------------
 
 
@@ -78,7 +81,14 @@ class Inventory extends React.Component {
 
 
       <div style={this.style} className='user-list'>
+      <br/>
+      <br/>
         <h3>Welcome back, {this.props.username}!</h3>
+        <br/>
+      <br/>
+
+        {/* <AllStats/> */}
+        <br/>
 
         <FloatingActionButtonZoom user={this.props.user} userTransaction={this.props.transactions} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
 
