@@ -137,24 +137,24 @@ export default function ReactVirtualizedTable({rows}) {
         rowGetter={({ index }) => rows[index]}
         columns={[
           {
-            width: 238,
+            width: 300,
             label: 'Company',
             dataKey: 'company',
           },
           {
-            width: 238,
+            width: 350,
             label: 'Transaction Amount (£)',
             dataKey: 'amount',
             numeric: true,
           },
           {
-            width: 238,
+            width: 350,
             label: 'Date',
             dataKey: 'date',
             numeric: true,
           },
           {
-            width: 245,
+            width: 350,
             label: 'Category',
             dataKey: 'spendingSection',
             numeric: true,
