@@ -74,7 +74,7 @@ class Inventory extends React.Component {
 // render component
 //------------------------------------------------------------------------------------------------------------------
   render () {
-    const { inventory, userTransaction} = this.state
+    // const { inventory, userTransaction} = this.state
 
     return (
 
