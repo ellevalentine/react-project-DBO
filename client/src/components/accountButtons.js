@@ -34,6 +34,8 @@ import GraphSelector from "../components/GraphSelector"
 
 
 
+
+
 function TabContainer(props) {
   const { children, dir } = props;
 
@@ -523,6 +525,9 @@ const otherDec2018 = Dec2018.filter( t => t.spendingSection === "other" ).map( t
             <h3>Select Year:</h3>
             <GraphSelector userTransactions={AllTransactions}/>
             <br/>
+
+           
+           
             
             
 
