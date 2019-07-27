@@ -26,6 +26,17 @@ Rails.application.routes.draw do
 
   delete '/savingpots/:id', to: 'saving_pots#deletePot'
 
+  # graphs 
+
+  post '/transaction_sum', to: 'transactions#allTransactionsSum'
+
+  post '/transaction_category', to: 'transactions#allTransactionsByCategory'
+
+  post '/sum_year' , to: 'transactions#sumOfEachYear'
+
+
+  
+
 
 
 
