@@ -34,7 +34,20 @@ Rails.application.routes.draw do
 
   post '/sum_year' , to: 'transactions#sumOfEachYear'
 
+  post '/year_category' , to: 'transactions#sumOfEachCategoryForEachYear'
 
+  post '/month_sum' , to: 'transactions#sumOfEachMonth'
+
+  post '/month_category' , to: 'transactions#sumOfEachCategoryFromEachMonth'
+
+
+  
+
+
+  
+
+
+  
   
 
 

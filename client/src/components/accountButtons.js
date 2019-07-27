@@ -72,6 +72,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function FloatingActionButtonZoom(props) {
+
     
   const classes = useStyles();
   const theme = useTheme();
@@ -161,14 +162,14 @@ export default function FloatingActionButtonZoom(props) {
             </br>
             <hr/>
             <h2> overall spending </h2>
-            {/* <OverAllChartsPage TotalSpending={sumOfAmounts} OtherAmounts={OtherAmounts} TechAmounts={TechAmounts} RetailAmounts={RetailAmounts} HolidayAmounts={HolidayAmounts} PhoneAmounts={PhoneAmounts} TravelAmounts={TravelAmounts} FoodAmounts={FoodAmounts} BillsAmounts={BillsAmounts} SubscriptionsAmounts={SubscriptionsAmounts}  /> */}
+            <OverAllChartsPage TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  />
             <br/>
             <hr/>
             <h2> overall spending </h2>
-            {/* <OverAllBarChart TotalSpending={sumOfAmounts} OtherAmounts={OtherAmounts} TechAmounts={TechAmounts} RetailAmounts={RetailAmounts} HolidayAmounts={HolidayAmounts} PhoneAmounts={PhoneAmounts} TravelAmounts={TravelAmounts} FoodAmounts={FoodAmounts} BillsAmounts={BillsAmounts} SubscriptionsAmounts={SubscriptionsAmounts}  /> */}
+            <OverAllBarChart TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  />
             <br/>
             <h3>Select Year:</h3>
-            {/* <GraphSelector userTransactions={AllTransactions}/> */}
+            <GraphSelector total_2019={props.total_2019} total_2018={props.total_2018}/>
             <br/>
        </TabContainer>
 

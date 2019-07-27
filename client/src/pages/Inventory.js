@@ -15,6 +15,9 @@ import FloatingActionButtonZoom from '../components/accountButtons'
 import {allTransactionsSum} from '../services/GraphApis'
 import {allTransactionsCategory} from '../services/GraphApis'
 import {sumOfEachYear} from '../services/GraphApis'
+import {EachYearCategory} from '../services/GraphApis'
+import {EachMonthSum} from "../services/GraphApis"
+import {MonthsCategory} from "../services/GraphApis"
 
 
 
@@ -42,7 +45,13 @@ class Inventory extends React.Component {
     total_sum: "",
     total_category: [],
     year_sum_2019: "",
-    year_sum_2018: ""
+    year_sum_2018: "",
+    category_2019: [],
+    category_2018: [],
+    month_sum_2019: [],
+    month_sum_2018: [],
+    month_categories_2019: [],
+    month_categories_2018: []
   }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -85,7 +94,9 @@ class Inventory extends React.Component {
       allTransactionsCategory(this.props.user.id)
         .then( data => {
             this.setState({total_category: data})
-         } )
+          } )
+
+         
         }
 
       set2019Sum = () => {
@@ -103,11 +114,59 @@ class Inventory extends React.Component {
                   this.setState({year_sum_2018: data})
                 } )
              }
-        
+
+             
+
+      categories2019 = () => {
+      
+          EachYearCategory(this.props.user.id, "2019")
+              .then( data => {
+                  this.setState({category_2019: data})
+               } )
+           }
+
+      categories2018 = () => {
+      
+          EachYearCategory(this.props.user.id, "2018")
+              .then( data => {
+                  this.setState({category_2018: data})
+               } )
+           }
+
+      monthsSum2019 = () => {
+      
+          EachMonthSum(this.props.user.id, "2019")
+              .then( data => {
+                  this.setState({month_sum_2019: data})
+               } )
+           }
+
+      monthsSum2018 = () => {
+      
+        EachMonthSum(this.props.user.id, "2018")
+            .then( data => {
+                    this.setState({month_sum_2018: data})
+                 } )
+            }
+
+     monthsCategory2019 = () => {
+      
+      MonthsCategory(this.props.user.id, "2019")
+            .then( data => {
+                    this.setState({month_categories_2019: data})
+                 } )
+            }
+
+    monthsCategory2018 = () => {
+      
+      MonthsCategory(this.props.user.id, "2018")
+            .then( data => {
+                    this.setState({month_categories_2018: data})
+                 } )
+            }
+
       
 
-
-          
       
 
 // component did mount - no user => to signin page
@@ -127,7 +186,14 @@ class Inventory extends React.Component {
       this.setTransactionsTotalCategory()
       this.set2019Sum()
       this.set2018Sum()
+      this.categories2019()
+      this.categories2018()
+      this.monthsSum2019()
+      this.monthsSum2018()
+      this.monthsCategory2019()
+      this.monthsCategory2018()
       
+
     }
   }
 
@@ -150,7 +216,7 @@ class Inventory extends React.Component {
         {/* <AllStats/> */}
         <br/>
 
-        <FloatingActionButtonZoom totalSum={this.state.total_sum} totalCategory={this.state.total_category} user={this.props.user} userTransaction={this.props.transactions} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
+        <FloatingActionButtonZoom total_2019={this.state.year_sum_2019} total_2018={this.state.year_sum_2018}  totalSum={this.state.total_sum} totalCategory={this.state.total_category} user={this.props.user} userTransaction={this.props.transactions} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
 
         <img
               alt="oh no!"
