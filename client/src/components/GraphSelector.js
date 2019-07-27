@@ -20,6 +20,8 @@ import MonthsBarChart from "../components/MonthsReuseableBarChart"
 import MonthSelector2019 from "../components/MonthSelector2019"
 import MonthSelector2018 from "../components/MonthSelector2018"
 
+import MonthDropDown2019 from "../components/MonthDropDown2019"
+
 
 function TabPanel(props) {
   const { children, value, index, userTransactions, ...other } = props;
@@ -513,7 +515,9 @@ const otherDec2018 = Dec2018.filter( t => t.spendingSection === "other" ).map( t
             <MonthsBarChart TotalSpending={SUMof2019} Jan={SUMjan2019} Feb={SUMfeb2019} Mar={SUMmar2019} Apr={SUMapr2019} May={SUMmay2019} Jun={SUMjun2019} Jul={SUMjul2019} Aug={SUMAug2019} Sep={SUMSep2019} Oct={SUMOct2019} Nov={SUMNov2019} Dec={SUMDec2019}    />
             <hr/>
             <MonthSelector2019 userTransactions={AllTransactions} />
-            
+
+
+            <MonthDropDown2019 />
         </TabPanel>
 
 
@@ -527,7 +531,7 @@ const otherDec2018 = Dec2018.filter( t => t.spendingSection === "other" ).map( t
             <MonthsBarChart TotalSpending={SUMof2018} Jan={SUMjan2018} Feb={SUMfeb2018} Mar={SUMmar2018} Apr={SUMapr2018} May={SUMmay2018} Jun={SUMjun2018} Jul={SUMjul2018} Aug={SUMAug2018} Sep={SUMSep2018} Oct={SUMOct2018} Nov={SUMNov2018} Dec={SUMDec2018}    />
             <hr/>
             <MonthSelector2018 userTransactions={AllTransactions} />
-            
+            <MonthDropDown2019/>
     
         </TabPanel>
 
