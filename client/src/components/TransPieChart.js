@@ -4,14 +4,14 @@ import { MDBContainer } from "mdbreact";
 
 class OverAllChartsPage extends React.Component {
 
- 
     
   state = {
     dataPie: {
       labels: ["Bills", "Subscriptions", "Food", "Travel", "Phone Contract", "Holidays", "Retail", "Tech", "Other"],
       datasets: [
         {
-          data: [ this.props.BillsAmounts, this.props.SubscriptionsAmounts, this.props.FoodAmounts, this.props.TravelAmounts, this.props.PhoneAmounts, this.props.HolidayAmounts, this.props.RetailAmounts, this.props.TechAmounts,  this.props.OtherAmounts   ],
+          data: [1,2,3,4,5,6,7,8,9],
+          // data: [this.props.BillsAmounts, this.props.SubscriptionsAmounts, this.props.FoodAmounts, this.props.TravelAmounts, this.props.PhoneAmounts, this.props.HolidayAmounts, this.props.RetailAmounts, this.props.TechAmounts, this.props.OtherAmounts],
           backgroundColor: [
             "#F7464A",
             "#46BFBD",

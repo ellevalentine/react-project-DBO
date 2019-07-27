@@ -3,14 +3,15 @@ import { Bar } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 
 class MonthsBarChart extends React.Component {
+
   state = {
     dataBar: {
       labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
       datasets: [
         {
           label: "Total Spending (£)",
-          data: [ this.props.Jan, this.props.Feb, this.props.Mar, this.props.Apr, this.props.May, this.props.Jun, this.props.Jul,this.props. Aug, this.props.Sep, this.props.Oct, this.props.Nov, this.props.Dec  ],
-            // data:[1,1,1,1,1,1,1,1,1,1,1,1],
+          // data: [ this.props.Jan, this.props.Feb, this.props.Mar, this.props.Apr, this.props.May, this.props.Jun, this.props.Jul,this.props. Aug, this.props.Sep, this.props.Oct, this.props.Nov, this.props.Dec  ],
+            data:[1,1,1,1,1,1,1,1,1,1,1,1],
         backgroundColor: [
             "rgba(255, 134,159,0.4)",
             "rgba(98,  182, 239,0.4)",
@@ -73,9 +74,10 @@ class MonthsBarChart extends React.Component {
 
 
   render() {
+    
     return (
       <MDBContainer>
-        <h3 className="mt-5">Total Spending: £ {this.props.TotalSpending}.00 </h3>
+        <h3 className="mt-5">Total Spending: £ .00 </h3>
         <Bar data={this.state.dataBar} options={this.state.barChartOptions} />
       </MDBContainer>
     );
