@@ -11,7 +11,18 @@ import {getInventory} from '../services/api'
 
 import FloatingActionButtonZoom from '../components/accountButtons'
 
-// import AllStats from "../components/OverAllStats"
+
+import {allTransactionsSum} from '../services/GraphApis'
+import {allTransactionsCategory} from '../services/GraphApis'
+import {sumOfEachYear} from '../services/GraphApis'
+
+
+
+
+
+
+
+
 
 
 //---------------------
@@ -27,8 +38,11 @@ class Inventory extends React.Component {
 // inital state  
 //------------------------------------------------------------------------------------------------------------------
   state = {
-    inventory: [],
-
+    inventory: [], 
+    total_sum: "",
+    total_category: [],
+    year_sum_2019: "",
+    year_sum_2018: ""
   }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -56,6 +70,46 @@ class Inventory extends React.Component {
      } )
     }
 
+
+    setTransactionsTotalSum = () => {
+      
+      allTransactionsSum(this.props.user.id)
+      .then( data => {
+          this.setState({total_sum: data})
+       } )
+      }
+
+
+    setTransactionsTotalCategory = () => {
+      
+      allTransactionsCategory(this.props.user.id)
+        .then( data => {
+            this.setState({total_category: data})
+         } )
+        }
+
+      set2019Sum = () => {
+      
+          sumOfEachYear(this.props.user.id, "2019")
+            .then( data => {
+                this.setState({year_sum_2019: data})
+              } )
+           }
+
+      set2018Sum = () => {
+      
+          sumOfEachYear(this.props.user.id, "2018")
+             .then( data => {
+                  this.setState({year_sum_2018: data})
+                } )
+             }
+        
+      
+
+
+          
+      
+
 // component did mount - no user => to signin page
 //------------------------------------------------------------------------------------------------------------------ 
 
@@ -68,6 +122,12 @@ class Inventory extends React.Component {
       this.props.history.push('/signin')
     } else {
       this.setInventory()
+      
+      this.setTransactionsTotalSum()
+      this.setTransactionsTotalCategory()
+      this.set2019Sum()
+      this.set2018Sum()
+      
     }
   }
 
@@ -90,7 +150,7 @@ class Inventory extends React.Component {
         {/* <AllStats/> */}
         <br/>
 
-        <FloatingActionButtonZoom user={this.props.user} userTransaction={this.props.transactions} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
+        <FloatingActionButtonZoom totalSum={this.state.total_sum} totalCategory={this.state.total_category} user={this.props.user} userTransaction={this.props.transactions} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
 
         <img
               alt="oh no!"

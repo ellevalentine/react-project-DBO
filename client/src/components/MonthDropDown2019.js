@@ -3,18 +3,21 @@ import React from 'react'
 
 
 
+
 class MonthDropDown2019 extends React.Component {
 
   state = {
-
-    MonthSelected: "jan",
-
+    MonthSelected: "jan"
   }
+
+
+
 
   selectedMonth = (event) => {
     event.preventDefault()
 
     this.setState({MonthSelected: event.target.value})
+  
   }
 
   MonthlyGraph = () => {

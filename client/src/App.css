@@ -164,7 +164,7 @@ a:active {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1950px
+  width: 100%
 }
 
 .sign-in-up-form {
