@@ -2,24 +2,15 @@ import React from 'react'
 
 import ReuseableBarChart from "../components/TypeReuseableBarChart"
 
-
-
-
-
 class MonthDropDown2019 extends React.Component {
 
   state = {
     MonthSelected: ""
   }
 
-
-
-
   selectedMonth = (event) => {
     event.preventDefault()
-
     this.setState({MonthSelected: event.target.value})
-  
   }
 
   MonthlyGraph = () => {
@@ -143,7 +134,7 @@ class MonthDropDown2019 extends React.Component {
              />            </div> )  
             break;
 
-        case "dec":
+        case "dev":
             return ( <div>
               <br/>
               <h2> 2019  DEC spending </h2>
@@ -151,15 +142,7 @@ class MonthDropDown2019 extends React.Component {
               total={this.props.month_sum_2019.dec}
               allData={this.props.month_categories_2019.dec} 
              />            </div> )  
-            break;
-            default:
-            return( <div>
-              <br/>
-              <h2> 2019  JAN spending </h2>
-              <ReuseableBarChart 
-              total={this.props.month_sum_2019.jan}
-              allData={this.props.month_categories_2019.jan} 
-             />            </div> )  
+        
       }
   }
 
@@ -187,13 +170,10 @@ class MonthDropDown2019 extends React.Component {
             <option value="dev">Dec</option>
         </select>
     <div>
-        {this.MonthlyGraph()}
+       {this.MonthlyGraph()}
     </div>
-
-
 </div>
-     
-     
+    
     )
   }
 }
