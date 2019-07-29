@@ -7,11 +7,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import Zoom from '@material-ui/core/Zoom';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
-import UpIcon from '@material-ui/icons/KeyboardArrowUp';
+// import Zoom from '@material-ui/core/Zoom';
+// import Fab from '@material-ui/core/Fab';
+// import AddIcon from '@material-ui/icons/Add';
+// import EditIcon from '@material-ui/icons/Edit';
+// import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { green } from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button'
 
@@ -140,8 +140,9 @@ export default function FloatingActionButtonZoom(props) {
 
 
 
-      <TabContainer >
+      <TabContainer dir="" >
       <div className="HomepageCarousel">
+        <p>overview</p>
         {/* <CarouselPage TotalSpending={sumOfAmounts} OtherAmounts={OtherAmounts} TechAmounts={TechAmounts} RetailAmounts={RetailAmounts} HolidayAmounts={HolidayAmounts} PhoneAmounts={PhoneAmounts} TravelAmounts={TravelAmounts} FoodAmounts={FoodAmounts} BillsAmounts={BillsAmounts} SubscriptionsAmounts={SubscriptionsAmounts}  /> */}
       </div>
       </TabContainer>
@@ -165,8 +166,8 @@ export default function FloatingActionButtonZoom(props) {
             <OverAllChartsPage user={props.user} TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  />
             <br/>
             <hr/>
-            <h2> overall spending </h2>
-            <OverAllBarChart TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  />
+            {/* <h2> overall spending </h2> */}
+            {/* <OverAllBarChart TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  /> */}
             <br/>
             <h3>Select Year:</h3>
             <GraphSelector month_categories_2018={props.month_categories_2018}  month_categories_2019={props.month_categories_2019} total_2019={props.total_2019} total_2018={props.total_2018} month_sum_2019={props.month_sum_2019} month_sum_2018={props.month_sum_2018}/>
@@ -202,7 +203,7 @@ export default function FloatingActionButtonZoom(props) {
                  </div> 
 
 
-                  {props.allstocks.map( stock => <SimpleCard stock={stock} /> ) }
+                  {props.allstocks.map( stock => <SimpleCard key={stock.id} stock={stock} /> ) }
 
         </TabContainer>
 

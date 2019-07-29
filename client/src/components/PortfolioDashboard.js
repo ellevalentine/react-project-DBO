@@ -31,7 +31,7 @@ class PortfolioDashBoard extends Component {
           <Dialog open={this.state.show} onClose={ () => {this.setState({show: false})}}>
             <p> helloooooooooooo </p>
           </Dialog>
-          <Button variant="outlined" color="success" type="button" onClick={this.handleClick}>
+          <Button variant="outlined" type="button" onClick={this.handleClick}>
             View Portfolio 
           </Button>
           <br/>

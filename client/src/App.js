@@ -148,12 +148,13 @@ signout = () => {
     return (
       <div className="App">
         <Header username={username} signout={signout}/> 
+        
         <Switch> 
-          <Route exact path='/' component={props => <HomePage user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } /> />
-          <Route path='/signin' component={props => <SignInForm signin={signin} {...props}/>} />
-          <Route path='/inventory' component={props => <Inventory month_categories_2018={this.state.month_categories_2018} month_categories_2019={this.state.month_categories_2019} total_category={this.state.total_category} user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
-          <Route path='/signup' component={props => <SignUpForm signin={signin} {...props}/>} />
-          <Route component={() => <h1>Page not found.</h1>} />
+          <Route exact path='/' render={props => <HomePage user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } /> />
+          <Route path='/signin' render={props => <SignInForm signin={signin} {...props}/>} />
+          <Route path='/inventory' render={props => <Inventory month_categories_2018={this.state.month_categories_2018} month_categories_2019={this.state.month_categories_2019} total_category={this.state.total_category} user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
+          <Route path='/signup' render={props => <SignUpForm signin={signin} {...props}/>} />
+          <Route render={() => <h1>Page not found.</h1>} />
         </Switch>
       </div>
     )

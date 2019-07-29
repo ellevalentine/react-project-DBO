@@ -36,7 +36,7 @@ class MapPots extends React.Component {
       <div className="potCards">
         {
           this.props.userPots.map(item =>
-            <ImgMediaCard item={item} />
+            <ImgMediaCard key={item.id} item={item} />
           )
         }
       </div>

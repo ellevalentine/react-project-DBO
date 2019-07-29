@@ -26,9 +26,7 @@ class TranDashboard extends Component {
     return (
         <main>
           <br/>
-          
-    
-          
+                
           <Dialog open={this.state.show} onClose={ () => {this.setState({show: false})}}>
             <TransactionDetails user={this.props.user} />
           </Dialog>

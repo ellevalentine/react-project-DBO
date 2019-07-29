@@ -21,6 +21,8 @@ import MonthSelector2019 from "../components/MonthSelector2019"
 import MonthSelector2018 from "../components/MonthSelector2018"
 
 import MonthDropDown2019 from "../components/MonthDropDown2019"
+import MonthDropDown2018 from "../components/MonthDropDown2018"
+
 
 
 function TabPanel(props) {
@@ -135,7 +137,7 @@ export default function GraphSelector(props) {
         >
           <Tab label="2019" {...a11yProps(0)} />
           <Tab label="2018" {...a11yProps(1)} />
-          <Tab label="2017" {...a11yProps(2)} />
+          {/* <Tab label="2017" {...a11yProps(2)} /> */}
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -173,14 +175,14 @@ export default function GraphSelector(props) {
             <hr/>
             {/* <MonthSelector2018 userTransactions={AllTransactions} /> */}
 
-            { /* NEED TO MAKE THIS <MonthDropDown2019 total_2019={props.total_2019} total_2018={props.total_2018}/> */}
+            {/* <MonthDropDown2018 month_categories_2019={props.month_categories_2018} total_2018={props.total_2018} month_sum_2018={props.month_sum_2018} category={props.month_sum_2018}/> */}
     
         </TabPanel>
 
 
-        <TabPanel value={value} index={2} dir={theme.direction}>
+        {/* <TabPanel value={value} index={2} dir={theme.direction}>
           Item Three
-        </TabPanel>
+        </TabPanel> */}
       </SwipeableViews>
       {fabs.map((fab, index) => (
         <Zoom
