@@ -19,6 +19,14 @@ import {getUsers} from './services/api'
 import {getAllStocks} from './services/api'
 
 
+//graphs 
+
+import {allTransactionsCategory} from '../src/services/GraphApis' 
+import {MonthsCategory} from "../src/services/GraphApis"
+
+
+
+
 
 
 
@@ -40,7 +48,8 @@ class App extends Component {
     savingPots:[],
     allstocks:[],
     test: [],
-    sum: []
+    sum: [],
+    total_category: []
   }
 //------------------------------------------------------------------------------------------------------------------
 // sign in
@@ -56,6 +65,22 @@ class App extends Component {
         })
       }
     )
+
+    MonthsCategory(user.id, "2019")
+    .then( data => {
+            this.setState({month_categories_2019: data})
+         } )
+
+    allTransactionsCategory(user.id)
+    .then( data => {
+        this.setState({total_category: data})
+      } )
+ 
+     MonthsCategory(user.id, "2018")
+          .then( data => {
+                  this.setState({month_categories_2018: data})
+               } )
+        
     // this.setState({transactions: user.transactions})
     // this.setState({savingPots: user.saving_pots})
     // this.setState({allstocks: user.allstocks})
@@ -98,6 +123,20 @@ signout = () => {
       )
    }
  }
+
+
+ //total categories  CALL THIS FUNCITON 
+
+//  setTransactionsTotalCategory = () => {
+//    debugger
+      
+//   allTransactionsCategory(this.state.user.id)
+//     .then( data => {
+//         this.setState({total_category: data})
+//       } )
+
+     
+//     }
  //------------------------------------------------------------------------------------------------------------------
 
 // render component
@@ -112,7 +151,7 @@ signout = () => {
         <Switch> 
           <Route exact path='/' component={props => <HomePage user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } /> />
           <Route path='/signin' component={props => <SignInForm signin={signin} {...props}/>} />
-          <Route path='/inventory' component={props => <Inventory user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
+          <Route path='/inventory' component={props => <Inventory month_categories_2018={this.state.month_categories_2018} month_categories_2019={this.state.month_categories_2019} total_category={this.state.total_category} user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
           <Route path='/signup' component={props => <SignUpForm signin={signin} {...props}/>} />
           <Route component={() => <h1>Page not found.</h1>} />
         </Switch>

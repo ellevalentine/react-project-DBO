@@ -162,14 +162,14 @@ export default function FloatingActionButtonZoom(props) {
             </br>
             <hr/>
             <h2> overall spending </h2>
-            <OverAllChartsPage TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  />
+            <OverAllChartsPage user={props.user} TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  />
             <br/>
             <hr/>
             <h2> overall spending </h2>
             <OverAllBarChart TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  />
             <br/>
             <h3>Select Year:</h3>
-            <GraphSelector total_2019={props.total_2019} total_2018={props.total_2018}/>
+            <GraphSelector month_categories_2018={props.month_categories_2018}  month_categories_2019={props.month_categories_2019} total_2019={props.total_2019} total_2018={props.total_2018} month_sum_2019={props.month_sum_2019} month_sum_2018={props.month_sum_2018}/>
             <br/>
        </TabContainer>
 
