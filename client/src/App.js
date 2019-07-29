@@ -14,6 +14,22 @@ import SignUpForm from './pages/SignUpForm'
 
 //grab the validate function from the api.js to use 
 import {validate} from './services/api'
+import {getTransactions} from './services/api'
+import {getUsers} from './services/api'
+import {getAllStocks} from './services/api'
+
+
+//graphs 
+
+import {allTransactionsCategory} from '../src/services/GraphApis' 
+import {MonthsCategory} from "../src/services/GraphApis"
+
+
+
+
+
+
+
 
 import './App.css'
 
@@ -26,18 +42,53 @@ class App extends Component {
 // initial state
 //------------------------------------------------------------------------------------------------------------------
   state = { // this is the initial state and when someone signsin this will be updated by the setState below
-    username:''
+    username:'',
+    user:{},
+    transactions:[],
+    savingPots:[],
+    allstocks:[],
+    test: [],
+    sum: [],
+    total_category: []
   }
 //------------------------------------------------------------------------------------------------------------------
-
 // sign in
 //------------------------------------------------------------------------------------------------------------------
   // only one user can be signed in at once so when they are the username will be replaced eachtime
   //update sign in since it was expecting a string now it will be getting a little object with username and id
   signin = (user) => { 
-    this.setState({ username: user.username })
+    
+    getAllStocks().then( data => 
+      {
+        this.setState({allstocks: data, user: user, transactions: user.transactions, savingPots: user.saving_pots, username: user.username}, () => {
+          this.props.history.push('/inventory')
+        })
+      }
+    )
+
+    MonthsCategory(user.id, "2019")
+    .then( data => {
+            this.setState({month_categories_2019: data})
+         } )
+
+    allTransactionsCategory(user.id)
+    .then( data => {
+        this.setState({total_category: data})
+      } )
+ 
+     MonthsCategory(user.id, "2018")
+          .then( data => {
+                  this.setState({month_categories_2018: data})
+               } )
+        
+    // this.setState({transactions: user.transactions})
+    // this.setState({savingPots: user.saving_pots})
+    // this.setState({allstocks: user.allstocks})
+    // this.setState({ username: user.username })
+
     localStorage.setItem('token', user.token) // add token
-    this.props.history.push('/inventory')
+    
+
   }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -60,31 +111,47 @@ signout = () => {
  componentDidMount(){
    if (localStorage.token){
      validate()
-      .then(data => {
-        if (data.error){
-          alert(data.error)
-        } else{
+      .then(
+        data => {
+        // if (data.error){
+        //   alert(data.error)
+        // } else
+        // {
           this.signin(data)
-        }
-      })
-
+        // }
+      }
+      )
    }
  }
+
+
+ //total categories  CALL THIS FUNCITON 
+
+//  setTransactionsTotalCategory = () => {
+//    debugger
+      
+//   allTransactionsCategory(this.state.user.id)
+//     .then( data => {
+//         this.setState({total_category: data})
+//       } )
+
+     
+//     }
  //------------------------------------------------------------------------------------------------------------------
 
 // render component
 //------------------------------------------------------------------------------------------------------------------
   render() {
     const {signin, signout} = this
-    const {username} = this.state // so we can pass the username down to the header to welcome the user
+    const {username, transactions, savingPots, allstocks, user} = this.state // so we can pass the username down to the header to welcome the user
 
     return (
       <div className="App">
         <Header username={username} signout={signout}/> 
         <Switch> 
-          <Route exact path='/' component={HomePage} />
+          <Route exact path='/' component={props => <HomePage user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } /> />
           <Route path='/signin' component={props => <SignInForm signin={signin} {...props}/>} />
-          <Route path='/inventory' component={props => <Inventory username={username} {...props}/> } />
+          <Route path='/inventory' component={props => <Inventory month_categories_2018={this.state.month_categories_2018} month_categories_2019={this.state.month_categories_2019} total_category={this.state.total_category} user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
           <Route path='/signup' component={props => <SignUpForm signin={signin} {...props}/>} />
           <Route component={() => <h1>Page not found.</h1>} />
         </Switch>

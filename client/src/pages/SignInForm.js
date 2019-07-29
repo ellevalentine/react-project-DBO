@@ -52,7 +52,7 @@ handleChange = event =>
     const { handleChange, handleSubmit } = this
 
     return (
-      <div>
+      <div className="signInform">
         <TextField
           id='usernameInput'
           label='Username'
@@ -77,6 +77,12 @@ handleChange = event =>
         <Button onClick={handleSubmit} variant='contained' color='primary'>
           SUBMIT
         </Button>
+
+        <img
+              alt="oh no!"
+              className="signInPicture"
+              src="http://www.drinkingwaterfountains.co.uk/wp/wp-content/uploads/2018/04/installation-service.jpg"
+            />
        
       </div>
     )

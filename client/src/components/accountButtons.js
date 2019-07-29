@@ -13,6 +13,27 @@ import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { green } from '@material-ui/core/colors';
+import Button from '@material-ui/core/Button'
+
+
+import ReactVirtualizedTable from '../components/eachTransaction'
+import TranDashboard from "../components/TranDashboard";
+import OverAllChartsPage from "../components/TransPieChart"
+import MapPots from "../components/mapPots"
+import NewPotDashBoard from "../components/NewPotDashBoard";
+import SimpleCard from "../components/stockCard"
+import PortfolioDashBoard from "../components/PortfolioDashboard"
+import OverAllBarChart from "../components/OverAllBarChart"
+import ReuseableBarChart from "./TypeReuseableBarChart"
+import MonthsBarChart from "../components/MonthsReuseableBarChart"
+
+
+import CarouselPage from "../components/Carousel"
+import GraphSelector from "../components/GraphSelector"
+
+
+
+
 
 function TabContainer(props) {
   const { children, dir } = props;
@@ -32,7 +53,7 @@ TabContainer.propTypes = {
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    width: 500,
+    width: "80%",
     position: 'relative',
     minHeight: 200,
   },
@@ -50,10 +71,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function FloatingActionButtonZoom() {
+export default function FloatingActionButtonZoom(props) {
+
+    
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+
 
   function handleChange(event, newValue) {
     setValue(newValue);
@@ -72,22 +96,25 @@ export default function FloatingActionButtonZoom() {
     {
       color: 'primary',
       className: classes.fab,
-      icon: <AddIcon />,
+      icon: "",
       label: 'Add',
     },
     {
       color: 'secondary',
       className: classes.fab,
-      icon: <EditIcon />,
+      icon: "",
       label: 'Edit',
     },
     {
       color: 'inherit',
       className: clsx(classes.fab, classes.fabGreen),
-      icon: <UpIcon />,
+      icon: "",
       label: 'Expand',
     },
   ];
+
+  
+
 
   return (
     <div className={classes.root}>
@@ -95,13 +122,14 @@ export default function FloatingActionButtonZoom() {
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
+          indicatorColor="secondary"
+          textColor="secondary"
           variant="fullWidth"
         >
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-          <Tab label="Item Three" />
+          <Tab label="Overview" />
+          <Tab label="Current" />
+          <Tab label="Savings" />
+          <Tab label="Portfolio" />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -109,26 +137,77 @@ export default function FloatingActionButtonZoom() {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabContainer dir={theme.direction}>Item One</TabContainer>
-        <TabContainer dir={theme.direction}>Item Two</TabContainer>
-        <TabContainer dir={theme.direction}>Item Three</TabContainer>
+
+
+
+      <TabContainer >
+      <div className="HomepageCarousel">
+        {/* <CarouselPage TotalSpending={sumOfAmounts} OtherAmounts={OtherAmounts} TechAmounts={TechAmounts} RetailAmounts={RetailAmounts} HolidayAmounts={HolidayAmounts} PhoneAmounts={PhoneAmounts} TravelAmounts={TravelAmounts} FoodAmounts={FoodAmounts} BillsAmounts={BillsAmounts} SubscriptionsAmounts={SubscriptionsAmounts}  /> */}
+      </div>
+      </TabContainer>
+
+
+   
+      <TabContainer dir={theme.direction}> 
+            <div className='addButton'>
+            <TranDashboard user={props.user} /> <br/>
+            </div>
+            Transactions:
+            <br/>
+
+         <ReactVirtualizedTable transactions={props.userTransaction} rows={props.userTransaction}/>
+      
+            <br>
+
+            </br>
+            <hr/>
+            <h2> overall spending </h2>
+            <OverAllChartsPage user={props.user} TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  />
+            <br/>
+            <hr/>
+            <h2> overall spending </h2>
+            <OverAllBarChart TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  />
+            <br/>
+            <h3>Select Year:</h3>
+            <GraphSelector month_categories_2018={props.month_categories_2018}  month_categories_2019={props.month_categories_2019} total_2019={props.total_2019} total_2018={props.total_2018} month_sum_2019={props.month_sum_2019} month_sum_2018={props.month_sum_2018}/>
+            <br/>
+       </TabContainer>
+
+
+
+
+
+        <TabContainer dir={theme.direction}>
+        
+             <div className='addButton'>
+               <NewPotDashBoard user={props.user}/>
+               <br/>
+               <br/>
+                </div>
+             <hr/>
+             <div>
+               <MapPots userPots={props.userPots || []} />
+
+             </div>
+
+
+                   </TabContainer>
+
+                 <TabContainer dir={theme.direction}>
+                 Stocks Account
+                 <div className='addButton'> 
+                    <PortfolioDashBoard />
+                    <br/>
+                    <br/>
+                 </div> 
+
+
+                  {props.allstocks.map( stock => <SimpleCard stock={stock} /> ) }
+
+        </TabContainer>
+
       </SwipeableViews>
-      {fabs.map((fab, index) => (
-        <Zoom
-          key={fab.color}
-          in={value === index}
-          timeout={transitionDuration}
-          style={{
-            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
-          }}
-          unmountOnExit
-        >
-          <Fab aria-label={fab.label} className={fab.className} color={fab.color}>
-            {fab.icon}
-          </Fab>
-        </Zoom>
-      ))}
+    
     </div>
   );
 }
-

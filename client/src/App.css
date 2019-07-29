@@ -61,7 +61,7 @@ a:hover,
 a:active {
   text-decoration: none;
   color: #716f72;
-  position: relative;
+  /* position: relative; */
 }
 
 .navbar-link,
@@ -81,6 +81,18 @@ a:active {
   font-size: larger;
 }
 
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.HomepageCarousel {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
 .Inline {
   display: inline-block;
 }
@@ -91,9 +103,77 @@ a:active {
   color: #1a7874;
 }
 
+.potCards {
+  
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    flex-wrap: wrap;
+    border: 10px;
+    justify-content: space-between;
+    margin-bottom: 20px
+}
+
+.stockCards {
+  
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  flex-wrap: wrap;
+  border: 10px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: white;
+  background-color: black
+}
+
+.potDetailImage {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 450px
+  /* height: 10%; */
+
+}
+
+.TransactionModal {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.signInform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+  
+}
+
+.HomepagePicture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-left: 0
+
+}
+
+.signInPicture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%
+}
+
 .sign-in-up-form {
   text-align: center;
   margin: 30px 30px;
+}
+
+.savingCard {
+  display: inline-block;
 }
 
 @keyframes App-logo-spin {
