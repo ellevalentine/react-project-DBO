@@ -17,7 +17,7 @@ import {allTransactionsCategory} from '../services/GraphApis'
 import {sumOfEachYear} from '../services/GraphApis'
 import {EachYearCategory} from '../services/GraphApis'
 import {EachMonthSum} from "../services/GraphApis"
-import {MonthsCategory} from "../services/GraphApis"
+// import {MonthsCategory} from "../services/GraphApis"
 
 
 
@@ -89,15 +89,15 @@ class Inventory extends React.Component {
       }
 
 
-    setTransactionsTotalCategory = () => {
+    // setTransactionsTotalCategory = () => {
       
-      allTransactionsCategory(this.props.user.id)
-        .then( data => {
-            this.setState({total_category: data})
-          } )
+    //   allTransactionsCategory(this.props.user.id)
+    //     .then( data => {
+    //         this.setState({total_category: data})
+    //       } )
 
          
-        }
+    //     }
 
       set2019Sum = () => {
       
@@ -149,21 +149,21 @@ class Inventory extends React.Component {
                  } )
             }
 
-     monthsCategory2019 = () => {
+    //  monthsCategory2019 = () => {
       
-      MonthsCategory(this.props.user.id, "2019")
-            .then( data => {
-                    this.setState({month_categories_2019: data})
-                 } )
-            }
+    //   MonthsCategory(this.props.user.id, "2019")
+    //         .then( data => {
+    //                 this.setState({month_categories_2019: data})
+    //              } )
+    //         }
 
-    monthsCategory2018 = () => {
+    // monthsCategory2018 = () => {
       
-      MonthsCategory(this.props.user.id, "2018")
-            .then( data => {
-                    this.setState({month_categories_2018: data})
-                 } )
-            }
+    //   MonthsCategory(this.props.user.id, "2018")
+    //         .then( data => {
+    //                 this.setState({month_categories_2018: data})
+    //              } )
+    //         }
 
       
 
@@ -183,15 +183,15 @@ class Inventory extends React.Component {
       this.setInventory()
       
       this.setTransactionsTotalSum()
-      this.setTransactionsTotalCategory()
+      // this.setTransactionsTotalCategory()
       this.set2019Sum()
       this.set2018Sum()
       this.categories2019()
       this.categories2018()
       this.monthsSum2019()
       this.monthsSum2018()
-      this.monthsCategory2019()
-      this.monthsCategory2018()
+      // this.monthsCategory2019()
+      // this.monthsCategory2018()
       
 
     }
@@ -216,7 +216,7 @@ class Inventory extends React.Component {
         {/* <AllStats/> */}
         <br/>
 
-        <FloatingActionButtonZoom total_2019={this.state.year_sum_2019} total_2018={this.state.year_sum_2018}  totalSum={this.state.total_sum} totalCategory={this.state.total_category} user={this.props.user} userTransaction={this.props.transactions} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
+        <FloatingActionButtonZoom month_categories_2018={this.props.month_categories_2018} month_categories_2019={this.props.month_categories_2019} month_sum_2018={this.props.month_sum_2018} month_sum_2019={this.state.month_sum_2019} total_2019={this.state.year_sum_2019} total_2018={this.state.year_sum_2018}  totalSum={this.state.total_sum} totalCategory={this.props.total_category} user={this.props.user} userTransaction={this.props.transactions} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
 
         <img
               alt="oh no!"

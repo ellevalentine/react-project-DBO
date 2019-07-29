@@ -2,6 +2,11 @@ import React from "react";
 import { Pie } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 
+import {allTransactionsSum} from '../services/GraphApis'
+import {allTransactionsCategory} from '../services/GraphApis'
+
+
+
 class OverAllChartsPage extends React.Component {
 
     
@@ -10,8 +15,18 @@ class OverAllChartsPage extends React.Component {
       labels: ["Bills", "Subscriptions", "Food", "Travel", "Phone Contract", "Holidays", "Retail", "Tech", "Other"],
       datasets: [
         {
-          data: [1,2,3,4,5,6,7,8,9],
-          // data: [this.props.BillsAmounts, this.props.SubscriptionsAmounts, this.props.FoodAmounts, this.props.TravelAmounts, this.props.PhoneAmounts, this.props.HolidayAmounts, this.props.RetailAmounts, this.props.TechAmounts, this.props.OtherAmounts],
+             data: [
+        this.props.BillsAmounts,
+        this.props.SubscriptionsAmounts,
+        this.props.FoodAmounts,
+        this.props.TravelAmounts,
+        this.props.PhoneAmounts,
+        this.props.HolidayAmounts,
+        this.props.RetailAmounts,
+        this.props.TechAmounts,
+        this.props.OtherAmounts
+      ],
+          // data: [1,2,3,4,5,6,7,8,9],
           backgroundColor: [
             "#F7464A",
             "#46BFBD",
@@ -37,6 +52,32 @@ class OverAllChartsPage extends React.Component {
         }
       ]
     }
+  }
+
+  setTransactionsTotalSum = () => {
+      
+    allTransactionsSum(this.props.user.id)
+    .then( data => {
+        this.setState({spending: data})
+      } )
+    }
+
+
+  setTransactionsTotalCategory = () => {
+    
+    allTransactionsCategory(this.props.user.id)
+      .then( data => {
+          // this.setState({total_category: data})
+          this.setState({data: [data.BillsAmounts, data.SubscriptionsAmounts, data.FoodAmounts, data.TravelAmounts, data.PhoneAmounts, data.HolidayAmounts, data.RetailAmounts, data.TechAmounts, data.OtherAmounts]})
+        } )
+
+       
+      }
+
+  componentDidMount(){
+       
+      this.setTransactionsTotalCategory()
+
   }
 
   render() {

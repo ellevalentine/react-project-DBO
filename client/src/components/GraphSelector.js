@@ -151,10 +151,12 @@ export default function GraphSelector(props) {
             <h1> 2019 spending </h1>
             
             {/* <MonthsBarChart TotalSpending={SUMof2019} Jan={SUMjan2019} Feb={SUMfeb2019} Mar={SUMmar2019} Apr={SUMapr2019} May={SUMmay2019} Jun={SUMjun2019} Jul={SUMjul2019} Aug={SUMAug2019} Sep={SUMSep2019} Oct={SUMOct2019} Nov={SUMNov2019} Dec={SUMDec2019}    /> */}
+            <MonthsBarChart total={props.total_2019.sum_of_year}/>
+
             <hr/>
             {/* <MonthSelector2019 userTransactions={AllTransactions} /> */}
 
-            <MonthDropDown2019 total_2019={props.total_2019} total_2018={props.total_2018}/>
+            <MonthDropDown2019 month_categories_2019={props.month_categories_2019} total_2019={props.total_2019} month_sum_2019={props.month_sum_2019} category={props.month_sum_2019}/>
 
         </TabPanel>
 
@@ -167,10 +169,11 @@ export default function GraphSelector(props) {
            
             <h1> 2018 spending </h1>
             {/* <MonthsBarChart TotalSpending={SUMof2018} Jan={SUMjan2018} Feb={SUMfeb2018} Mar={SUMmar2018} Apr={SUMapr2018} May={SUMmay2018} Jun={SUMjun2018} Jul={SUMjul2018} Aug={SUMAug2018} Sep={SUMSep2018} Oct={SUMOct2018} Nov={SUMNov2018} Dec={SUMDec2018}    /> */}
+            <MonthsBarChart total={props.total_2018.sum_of_year}/>
             <hr/>
             {/* <MonthSelector2018 userTransactions={AllTransactions} /> */}
 
-            {/* <MonthDropDown2019 total_2019={props.total_2019} total_2018={props.total_2018}/> */}
+            { /* NEED TO MAKE THIS <MonthDropDown2019 total_2019={props.total_2019} total_2018={props.total_2018}/> */}
     
         </TabPanel>
 
