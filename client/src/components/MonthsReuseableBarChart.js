@@ -10,7 +10,7 @@ class MonthsBarChart extends React.Component {
       datasets: [
         {
           label: "Total Spending (£)",
-          data: [ this.props.Jan, this.props.feb, this.props.mar, this.props.apr, this.props.may, this.props.jun, this.props.jul, this.props.aug, this.props.sep, this.props.oct, this.props.nov, this.props.dec ],
+          data: [ this.props.jan, this.props.feb, this.props.mar, this.props.apr, this.props.may, this.props.jun, this.props.jul, this.props.aug, this.props.sep, this.props.oct, this.props.nov, this.props.dec ],
             // data:[1,1,1,1,1,1,1,1,1,1,1,1],
         backgroundColor: [
             "rgba(255, 134,159,0.4)",
@@ -78,7 +78,49 @@ class MonthsBarChart extends React.Component {
     return (
       <MDBContainer>
         <h3 className="mt-5">Total Spending: £{this.props.total}.00 </h3>
-        <Bar data={this.state.dataBar} options={this.state.barChartOptions} />
+        <Bar 
+        data={
+          {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+            datasets: [
+              {
+                label: "Total Spending (£)",
+                data: [ this.props.jan, this.props.feb, this.props.mar, this.props.apr, this.props.may, this.props.jun, this.props.jul, this.props.aug, this.props.sep, this.props.oct, this.props.nov, this.props.dec ],
+                  // data:[1,1,1,1,1,1,1,1,1,1,1,1],
+              backgroundColor: [
+                  "rgba(255, 134,159,0.4)",
+                  "rgba(98,  182, 239,0.4)",
+                  "rgba(255, 218, 128,0.4)",
+                  "rgba(113, 205, 205,0.4)",
+                  "rgba(170, 128, 252,0.4)",
+                  "rgba(255, 177, 101,0.4)",
+                  "rgba(123, 205, 205,0.4)",
+                  "rgba(200, 128, 252,0.4)",
+                  "rgba(170, 177, 101,0.4)",
+                  "rgba(255, 134,159,0.4)",
+                  "rgba(98,  182, 239,0.4)",
+                  "rgba(255, 218, 128,0.4)",
+                ],
+                borderWidth: 2,
+                borderColor: [
+                  "rgba(255, 134, 159, 1)",
+                  "rgba(98,  182, 239, 1)",
+                  "rgba(255, 218, 128, 1)",
+                  "rgba(113, 205, 205, 1)",
+                  "rgba(170, 128, 252, 1)",
+                  "rgba(255, 177, 101, 1)",
+                  "rgba(113, 205, 205, 1)",
+                  "rgba(170, 128, 252, 1)",
+                  "rgba(255, 177, 101, 1)",
+                  "rgba(255, 134, 159, 1)",
+                  "rgba(98,  182, 239, 1)",
+                  "rgba(255, 218, 128, 1)",
+                ]
+              }
+            ]
+          }
+        }
+         options={this.state.barChartOptions} />
       </MDBContainer>
     );
   }

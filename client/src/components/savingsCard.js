@@ -16,7 +16,7 @@ import DeletePotDashboard from "../components/DeleteSavingPot"
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 280,
+    maxWidth: "30%",
   },
 });
 

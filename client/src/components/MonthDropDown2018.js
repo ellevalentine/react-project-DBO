@@ -12,7 +12,7 @@ class MonthDropDown2018 extends React.Component {
   }
 
   selectedMonth = (event) => {
-    
+    event.preventDefault()
     this.setState({MonthSelected: event.target.value})
   }
 
@@ -38,8 +38,7 @@ class MonthDropDown2018 extends React.Component {
             <option value="dec">Dec</option>
         </select>
     <div>
-    <br/>
-    <br/>
+    
               <h2> 2018  {this.state.MonthSelected} spending </h2>
 
             {!this.props.month_sum_2018.jan?

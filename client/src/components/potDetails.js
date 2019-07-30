@@ -88,48 +88,48 @@ const neededMoney = props.item.goal
 
 //----------------------------------------------------------------------------------------------------------
   return (
-    <div className="ui segment">
-      <div className="ui two column centered grid">
-        <div className="row">
-          <div className="four wide column">
+    <div className="ui segment" width="90%">
+
             <img
               alt="oh no!"
               className="ui medium circular image bordered"
               src={require('../components/water1.png')}
             />
-          </div>
+
+      <div className="ui centered grid">
+        
+          
+          
+          
           <div >
-            <h2>{props.item.name}</h2>
+            <strong><h2>{props.item.name}</h2></strong>
+            <hr/>
+           
+            <strong>
+              <ul>
+                <li>
+               I want to raise £{props.item.goal} by {props.item.date}.
+               </li>
+               </ul>
+            </strong>
             <p>
               <strong>Description: </strong>
               {props.item.description} 
             </p>
-            <strong>
-              I want to raise £{props.item.goal} by {props.item.date}.
-            </strong>
-            <br />
-            <div >
-              <div >
-                <div className="row">
-                  <div className="column">
-                    <i  />
-                    <strong></strong>
-                  </div>
-                  <div className="column">
-                    <i />
-                    <br/>
+            <div >    
+                
 
-                    Time left: <Moment duration={currentCombinded}
+                    <strong>Time left:</strong> <Moment duration={currentCombinded}
                     date={combinded}
                     />
                     <hr/>
                     <strong>Options:</strong>
-                  </div>
-                  <div className="column">
+                  
+                  
                     <i />
 
                     <form  >
-{/* add on submit - onSubmit={props.setPaymentstate} */}
+
                     <select name='potSchedule' id="mySelect" >
                       <option value={"daily-"+perDayRoundedUp}>Daily</option>
                       <option value={"weekly-"+perWeekRoundedUp}  >Weekly</option>
@@ -151,6 +151,8 @@ const neededMoney = props.item.goal
                    Months left: {monthsTillGoal}
 
                    <br/> <br/>
+                   <h3 className="mt-5">Options to pay:</h3>
+                   <br/>
 
                    pay per day : <strong> £ {perDayRoundedUp} </strong>
 
@@ -166,16 +168,12 @@ const neededMoney = props.item.goal
                    
                
                     <ChartsPage perDayRoundedUp={perDayRoundedUp} perWeekRoundedUp={perWeekRoundedUp} perMonthRoundedUp={perMonthRoundedUp}/>
-               
 
-                </div>
-                </div>
-              </div>
             </div>
-       
-       
           </div>
-        </div>
+
+
+        
       </div>
     </div>
   );

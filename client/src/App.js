@@ -24,6 +24,8 @@ import {getAllStocks} from './services/api'
 import {allTransactionsCategory} from '../src/services/GraphApis' 
 import {MonthsCategory} from "../src/services/GraphApis"
 
+import {PercentChangeMonthly} from "../src/services/GraphApis"
+
 
 
 
@@ -49,7 +51,8 @@ class App extends Component {
     allstocks:[],
     test: [],
     sum: [],
-    total_category: []
+    total_category: [],
+    // month_percent_change: []
   }
 //------------------------------------------------------------------------------------------------------------------
 // sign in
@@ -80,11 +83,12 @@ class App extends Component {
           .then( data => {
                   this.setState({month_categories_2018: data})
                } )
+
+    // PercentChangeMonthly(user.id)
+    //       .then( data => {
+    //            this.setState({month_percent_change: data})
+    //           } )
         
-    // this.setState({transactions: user.transactions})
-    // this.setState({savingPots: user.saving_pots})
-    // this.setState({allstocks: user.allstocks})
-    // this.setState({ username: user.username })
 
     localStorage.setItem('token', user.token) // add token
     

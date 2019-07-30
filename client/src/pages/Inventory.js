@@ -50,8 +50,8 @@ class Inventory extends React.Component {
     category_2018: [],
     month_sum_2019: [],
     month_sum_2018: [],
-    month_categories_2019: [],
-    month_categories_2018: []
+    // month_categories_2019: [],
+    // month_categories_2018: []
   }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -216,7 +216,7 @@ class Inventory extends React.Component {
         {/* <AllStats/> */}
         <br/>
 
-        <FloatingActionButtonZoom month_categories_2018={this.props.month_categories_2018} month_categories_2019={this.props.month_categories_2019} month_sum_2018={this.props.month_sum_2018} month_sum_2019={this.state.month_sum_2019} total_2019={this.state.year_sum_2019} total_2018={this.state.year_sum_2018}  totalSum={this.state.total_sum} totalCategory={this.props.total_category} user={this.props.user} userTransaction={this.props.transactions} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
+        <FloatingActionButtonZoom month_categories_2018={this.props.month_categories_2018} month_categories_2019={this.props.month_categories_2019} month_sum_2018={this.state.month_sum_2018} month_sum_2019={this.state.month_sum_2019} total_2019={this.state.year_sum_2019} total_2018={this.state.year_sum_2018}  totalSum={this.state.total_sum} totalCategory={this.props.total_category} user={this.props.user} userTransaction={this.props.transactions} userPots={this.props.savingPots} allstocks={this.props.allstocks}/>
 
         <img
               alt="oh no!"

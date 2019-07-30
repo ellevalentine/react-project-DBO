@@ -31,6 +31,8 @@ import MonthsBarChart from "../components/MonthsReuseableBarChart"
 import CarouselPage from "../components/Carousel"
 import GraphSelector from "../components/GraphSelector"
 
+import LineChart from "../homePageComponents/compareGraph"
+
 
 
 
@@ -142,7 +144,9 @@ export default function FloatingActionButtonZoom(props) {
 
       <TabContainer dir="" >
       <div className="HomepageCarousel">
-        <p>overview</p>
+
+        <LineChart total_2019={props.total_2019} total_2018={props.total_2018} month_sum_2018={props.month_sum_2018} month_sum_2019={props.month_sum_2019} />
+        <hr/>
         {/* <CarouselPage TotalSpending={sumOfAmounts} OtherAmounts={OtherAmounts} TechAmounts={TechAmounts} RetailAmounts={RetailAmounts} HolidayAmounts={HolidayAmounts} PhoneAmounts={PhoneAmounts} TravelAmounts={TravelAmounts} FoodAmounts={FoodAmounts} BillsAmounts={BillsAmounts} SubscriptionsAmounts={SubscriptionsAmounts}  /> */}
       </div>
       </TabContainer>
@@ -162,7 +166,6 @@ export default function FloatingActionButtonZoom(props) {
 
             </br>
             <hr/>
-            <h2> overall spending </h2>
             <OverAllChartsPage user={props.user} TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  />
             <br/>
             <hr/>
@@ -170,7 +173,7 @@ export default function FloatingActionButtonZoom(props) {
             {/* <OverAllBarChart TotalSpending={props.totalSum.sum_of_all_amounts} OtherAmounts={props.totalCategory.other} TechAmounts={props.totalCategory.tech} RetailAmounts={props.totalCategory.retail} HolidayAmounts={props.totalCategory.holiday} PhoneAmounts={props.totalCategory.phone} TravelAmounts={props.totalCategory.travel} FoodAmounts={props.totalCategory.food} BillsAmounts={props.totalCategory.bills} SubscriptionsAmounts={props.totalCategory.sub}  /> */}
             <br/>
             <h3>Select Year:</h3>
-            <GraphSelector month_categories_2018={props.month_categories_2018}  month_categories_2019={props.month_categories_2019} total_2019={props.total_2019} total_2018={props.total_2018} month_sum_2019={props.month_sum_2019} month_sum_2018={props.month_sum_2018}/>
+            <GraphSelector month_sum_2018={props.month_sum_2018}  month_categories_2018={props.month_categories_2018}  month_categories_2019={props.month_categories_2019} total_2019={props.total_2019} total_2018={props.total_2018} month_sum_2019={props.month_sum_2019} />
             <br/>
        </TabContainer>
 

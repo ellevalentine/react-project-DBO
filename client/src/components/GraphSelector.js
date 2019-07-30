@@ -26,15 +26,8 @@ import MonthDropDown2018 from "../components/MonthDropDown2018"
 
 
 function TabPanel(props) {
+
   const { children, value, index, userTransactions, ...other } = props;
-
-
-  
-
-
-  
-
-
 
   return (
     <Typography
@@ -149,17 +142,11 @@ export default function GraphSelector(props) {
 
         <TabPanel value={value} index={0} dir={theme.direction}>
         <hr/>
-        
             <h1> 2019 spending </h1>
-            
-            {/* <MonthsBarChart TotalSpending={SUMof2019} Jan={SUMjan2019} Feb={SUMfeb2019} Mar={SUMmar2019} Apr={SUMapr2019} May={SUMmay2019} Jun={SUMjun2019} Jul={SUMjul2019} Aug={SUMAug2019} Sep={SUMSep2019} Oct={SUMOct2019} Nov={SUMNov2019} Dec={SUMDec2019}    /> */}
-            <MonthsBarChart total={props.total_2019.sum_of_year}/>
-
+            {/* add categories */}
+            <MonthsBarChart total={props.total_2019.sum_of_year} jan={props.month_sum_2019.jan} feb={props.month_sum_2019.feb} mar={props.month_sum_2019.mar} apr={props.month_sum_2019.apr} may={props.month_sum_2019.may} jun={props.month_sum_2019.jun} jul={props.month_sum_2019.jul} aug={props.month_sum_2019.aug} sep={props.month_sum_2019.sep} oct={props.month_sum_2019.oct} nov={props.month_sum_2019.nov} dec={props.month_sum_2019.dec} month_sum_2019={props.month_sum_2019} />
             <hr/>
-            {/* <MonthSelector2019 userTransactions={AllTransactions} /> */}
-
             <MonthDropDown2019 month_categories_2019={props.month_categories_2019} total_2019={props.total_2019} month_sum_2019={props.month_sum_2019} category={props.month_sum_2019}/>
-
         </TabPanel>
 
 
@@ -170,19 +157,17 @@ export default function GraphSelector(props) {
             <hr/>
            
             <h1> 2018 spending </h1>
-            {/* <MonthsBarChart TotalSpending={SUMof2018} Jan={SUMjan2018} Feb={SUMfeb2018} Mar={SUMmar2018} Apr={SUMapr2018} May={SUMmay2018} Jun={SUMjun2018} Jul={SUMjul2018} Aug={SUMAug2018} Sep={SUMSep2018} Oct={SUMOct2018} Nov={SUMNov2018} Dec={SUMDec2018}    /> */}
-            <MonthsBarChart total={props.total_2018.sum_of_year}/>
+            <MonthsBarChart total={props.total_2018.sum_of_year} jan={props.month_sum_2018.jan} feb={props.month_sum_2018.feb} mar={props.month_sum_2018.mar} apr={props.month_sum_2018.apr} may={props.month_sum_2018.may} jun={props.month_sum_2018.jun} jul={props.month_sum_2018.jul} aug={props.month_sum_2018.aug} sep={props.month_sum_2018.sep} oct={props.month_sum_2018.oct} nov={props.month_sum_2018.nov} dec={props.month_sum_2018.dec} month_sum_2018={props.month_sum_2018} />
             <hr/>
-            {/* <MonthSelector2018 userTransactions={AllTransactions} /> */}
-
-            {/* <MonthDropDown2018 month_categories_2019={props.month_categories_2018} total_2018={props.total_2018} month_sum_2018={props.month_sum_2018} category={props.month_sum_2018}/> */}
-    
+            <MonthDropDown2018 month_categories_2018={props.month_categories_2018} total_2018={props.total_2018} month_sum_2018={props.month_sum_2018} category={props.month_sum_2018}/>
         </TabPanel>
 
 
         {/* <TabPanel value={value} index={2} dir={theme.direction}>
           Item Three
         </TabPanel> */}
+
+
       </SwipeableViews>
       {fabs.map((fab, index) => (
         <Zoom

@@ -40,7 +40,11 @@ Rails.application.routes.draw do
 
   post '/month_category' , to: 'transactions#sumOfEachCategoryFromEachMonth'
 
+  post '/month_percent_change' , to: 'transactions#percentChange'
 
+
+
+  
   
 
 
