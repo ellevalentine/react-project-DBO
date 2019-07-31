@@ -73,7 +73,7 @@ class ReuseableBarChart extends React.Component {
 
 
 render() {
-  console.log(this.props)
+  // console.log(this.props)
   return (
     <MDBContainer>
       <h3 className="mt-5">Total Spending: £ {this.props.total}.00 </h3>

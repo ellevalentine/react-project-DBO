@@ -120,9 +120,9 @@ const VirtualizedTable = withStyles(styles)(MuiVirtualizedTable);
 // ---
 
 
-function createData(id, company, amount, date, spendingSection) {
-  return { id, company, amount, date, spendingSection };
-}
+// function createData(id, company, amount, date, spendingSection) {
+//   return { id, company, amount, date, spendingSection };
+// }
 
 
 export default function ReactVirtualizedTable({rows}) {

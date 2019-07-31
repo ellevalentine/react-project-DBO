@@ -2,8 +2,8 @@ import React from "react";
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+// import Menu from '@material-ui/core/Menu';
+// import MenuItem from '@material-ui/core/MenuItem';
 
 import {createTransaction} from "../services/api"
 
@@ -31,12 +31,10 @@ import {createTransaction} from "../services/api"
         handleSubmit = event => {
             event.preventDefault()
             
-            alert("Transaction added")
-          
             createTransaction(event.target.company.value, event.target.amount.value, event.target.date.value, event.target.category.value, this.state.userID )
-            // .then( this.props.setInventory())
-          
-            // this.props.history.push('/signin')
+            .then( trans => this.props.updateTransactions(trans, true))
+
+            this.props.closeModal()
         }
 
      

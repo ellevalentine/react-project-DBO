@@ -22,6 +22,8 @@ class MonthDropDown2018 extends React.Component {
     
     return (
 
+     
+
     <div>
         <select onChange={this.selectedMonth} name="category">
             <option defaultValue value="jan">Jan</option>
@@ -38,11 +40,13 @@ class MonthDropDown2018 extends React.Component {
             <option value="dec">Dec</option>
         </select>
     <div>
+      <br/>
+      <br/>
     
               <h2> 2018  {this.state.MonthSelected} spending </h2>
 
             {!this.props.month_sum_2018.jan?
-            console.log("error"):
+            console.log("Loading Data"):
             <ReuseableBarChart 
             total={this.props.month_sum_2018[this.state.MonthSelected]}
             allData={this.props.month_categories_2018[this.state.MonthSelected]} 

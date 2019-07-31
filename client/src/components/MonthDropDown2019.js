@@ -42,7 +42,7 @@ class MonthDropDown2019 extends React.Component {
               <h2> 2019  {this.state.MonthSelected} spending </h2>
 
             {!this.props.month_sum_2019.jan?
-            console.log("error"):
+            console.log("Loading Data"):
             <ReuseableBarChart 
             total={this.props.month_sum_2019[this.state.MonthSelected]}
             allData={this.props.month_categories_2019[this.state.MonthSelected]} 

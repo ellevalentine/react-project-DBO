@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
+// import clsx from 'clsx';
 import SwipeableViews from 'react-swipeable-views';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 // import EditIcon from '@material-ui/icons/Edit';
 // import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { green } from '@material-ui/core/colors';
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
 
 
 import ReactVirtualizedTable from '../components/eachTransaction'
@@ -23,12 +23,12 @@ import MapPots from "../components/mapPots"
 import NewPotDashBoard from "../components/NewPotDashBoard";
 import SimpleCard from "../components/stockCard"
 import PortfolioDashBoard from "../components/PortfolioDashboard"
-import OverAllBarChart from "../components/OverAllBarChart"
-import ReuseableBarChart from "./TypeReuseableBarChart"
-import MonthsBarChart from "../components/MonthsReuseableBarChart"
+// import OverAllBarChart from "../components/OverAllBarChart"
+// import ReuseableBarChart from "./TypeReuseableBarChart"
+// import MonthsBarChart from "../components/MonthsReuseableBarChart"
 
 
-import CarouselPage from "../components/Carousel"
+// import CarouselPage from "../components/Carousel"
 import GraphSelector from "../components/GraphSelector"
 
 import LineChart from "../homePageComponents/compareGraph"
@@ -89,31 +89,31 @@ export default function FloatingActionButtonZoom(props) {
     setValue(index);
   }
 
-  const transitionDuration = {
-    enter: theme.transitions.duration.enteringScreen,
-    exit: theme.transitions.duration.leavingScreen,
-  };
+  // const transitionDuration = {
+  //   enter: theme.transitions.duration.enteringScreen,
+  //   exit: theme.transitions.duration.leavingScreen,
+  // };
 
-  const fabs = [
-    {
-      color: 'primary',
-      className: classes.fab,
-      icon: "",
-      label: 'Add',
-    },
-    {
-      color: 'secondary',
-      className: classes.fab,
-      icon: "",
-      label: 'Edit',
-    },
-    {
-      color: 'inherit',
-      className: clsx(classes.fab, classes.fabGreen),
-      icon: "",
-      label: 'Expand',
-    },
-  ];
+  // const fabs = [
+  //   {
+  //     color: 'primary',
+  //     className: classes.fab,
+  //     icon: "",
+  //     label: 'Add',
+  //   },
+  //   {
+  //     color: 'secondary',
+  //     className: classes.fab,
+  //     icon: "",
+  //     label: 'Edit',
+  //   },
+  //   {
+  //     color: 'inherit',
+  //     className: clsx(classes.fab, classes.fabGreen),
+  //     icon: "",
+  //     label: 'Expand',
+  //   },
+  // ];
 
   
 
@@ -131,7 +131,7 @@ export default function FloatingActionButtonZoom(props) {
           <Tab label="Overview" />
           <Tab label="Current" />
           <Tab label="Savings" />
-          <Tab label="Portfolio" />
+          {/* <Tab label="Portfolio" /> */}
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -155,7 +155,7 @@ export default function FloatingActionButtonZoom(props) {
    
       <TabContainer dir={theme.direction}> 
             <div className='addButton'>
-            <TranDashboard user={props.user} /> <br/>
+            <TranDashboard user={props.user} updateTransactions={props.updateTransactions} /> <br/>
             </div>
             Transactions:
             <br/>
@@ -184,20 +184,20 @@ export default function FloatingActionButtonZoom(props) {
         <TabContainer dir={theme.direction}>
         
              <div className='addButton'>
-               <NewPotDashBoard user={props.user}/>
+               <NewPotDashBoard user={props.user} updatePots={props.updatePots}/>
                <br/>
                <br/>
                 </div>
              <hr/>
              <div>
-               <MapPots userPots={props.userPots || []} />
+               <MapPots deleteSavingPot={props.deleteSavingPot} userPots={props.userPots || []} />
 
              </div>
 
 
                    </TabContainer>
 
-                 <TabContainer dir={theme.direction}>
+                 {/* <TabContainer dir={theme.direction}>
                  Stocks Account
                  <div className='addButton'> 
                     <PortfolioDashBoard />
@@ -208,7 +208,7 @@ export default function FloatingActionButtonZoom(props) {
 
                   {props.allstocks.map( stock => <SimpleCard key={stock.id} stock={stock} /> ) }
 
-        </TabContainer>
+        </TabContainer> */}
 
       </SwipeableViews>
     

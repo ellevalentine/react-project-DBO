@@ -14,11 +14,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { green } from '@material-ui/core/colors';
 import Box from '@material-ui/core/Box';
-import ReuseableBarChart from "./TypeReuseableBarChart"
+// import ReuseableBarChart from "./TypeReuseableBarChart"
 import MonthsBarChart from "../components/MonthsReuseableBarChart"
 
-import MonthSelector2019 from "../components/MonthSelector2019"
-import MonthSelector2018 from "../components/MonthSelector2018"
+// import MonthSelector2019 from "../components/MonthSelector2019"
+// import MonthSelector2018 from "../components/MonthSelector2018"
 
 import MonthDropDown2019 from "../components/MonthDropDown2019"
 import MonthDropDown2018 from "../components/MonthDropDown2018"

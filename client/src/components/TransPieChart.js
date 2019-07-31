@@ -2,8 +2,8 @@ import React from "react";
 import { Pie } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 
-import {allTransactionsSum} from '../services/GraphApis'
-import {allTransactionsCategory} from '../services/GraphApis'
+// import {allTransactionsSum} from '../services/GraphApis'
+// import {allTransactionsCategory} from '../services/GraphApis'
 
 
 

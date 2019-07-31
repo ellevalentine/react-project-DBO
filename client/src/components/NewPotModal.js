@@ -31,13 +31,11 @@ class NewPotForm extends React.Component {
 
 handleSubmit = event => {
     event.preventDefault()
-    
-    alert("Pot added")
-  
+      
     createPot(event.target.name.value, event.target.description.value, event.target.goal.value, event.target.date.value, this.state.userID )
-    // .then( this.props.setInventory())
-  
-    // this.props.history.push('/signin')
+    .then(pots => this.props.updatePots(pots))
+    this.props.closeModal()
+    
 }
 
 // render component
