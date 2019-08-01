@@ -164,8 +164,8 @@ class LineChart extends React.Component {
                <strong>Jun</strong>: { Math.round( (((this.props.month_sum_2019.jun) - (this.props.month_sum_2018.jun)) / (this.props.month_sum_2018.jun))*10000)/100} %
                <br/><br/>
 
-               <strong>Aug</strong>: -
-                {/* { Math.round( (((this.props.month_sum_2019.aug) - (this.props.month_sum_2018.aug)) / (this.props.month_sum_2018.aug))*10000)/100} % */}
+               <strong>Aug</strong>:   
+                { Math.round( (((this.props.month_sum_2019.aug) - (this.props.month_sum_2018.aug)) / (this.props.month_sum_2018.aug))*10000)/100} %
                <br/><br/>
 
                <strong>Oct</strong>: - 

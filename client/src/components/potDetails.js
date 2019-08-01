@@ -154,15 +154,15 @@ const neededMoney = props.item.goal
                    <h3 className="mt-5">Options to pay:</h3>
                    <br/>
 
-                   pay per day : <strong> £ {perDayRoundedUp} </strong>
+                   Pay per day : <strong> £ {perDayRoundedUp} </strong>
 
                    <br/> 
 
-                   pay per week : <strong> £ {perWeekRoundedUp} </strong> 
+                   Pay per week : <strong> £ {perWeekRoundedUp} </strong> 
 
                    <br/> 
 
-                   pay per month : <strong> £ {perMonthRoundedUp} </strong> 
+                   Pay per month : <strong> £ {perMonthRoundedUp} </strong> 
 
                     <br/>
                    
