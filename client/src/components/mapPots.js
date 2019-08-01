@@ -5,7 +5,7 @@
 
 import React from 'react'
 
-import Item from '../components/Item'
+// import Item from '../components/Item'
 
 import ImgMediaCard from "../components/savingsCard"
 
@@ -36,7 +36,7 @@ class MapPots extends React.Component {
       <div className="potCards">
         {
           this.props.userPots.map(item =>
-            <ImgMediaCard item={item} />
+            <ImgMediaCard deleteSavingPot={this.props.deleteSavingPot} key={item.id} item={item} />
           )
         }
       </div>

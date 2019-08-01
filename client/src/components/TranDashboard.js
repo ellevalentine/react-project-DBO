@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
 import Dialog from '@material-ui/core/Dialog';
 
@@ -17,6 +17,8 @@ class TranDashboard extends Component {
 
   state = { show: false };
 
+  closeModal = () => {this.setState({show: false})}
+
   handleClick = () => {
     this.setState({show: !this.state.show})
   }
@@ -26,11 +28,9 @@ class TranDashboard extends Component {
     return (
         <main>
           <br/>
-          
-    
-          
-          <Dialog open={this.state.show} onClose={ () => {this.setState({show: false})}}>
-            <TransactionDetails user={this.props.user} />
+                
+          <Dialog open={this.state.show} onClose={this.closeModal}>
+            <TransactionDetails user={this.props.user} closeModal={this.closeModal} updateTransactions={this.props.updateTransactions}/>
           </Dialog>
           <Button variant="outlined" color="secondary" type="button" onClick={this.handleClick}>
             Add Transaction

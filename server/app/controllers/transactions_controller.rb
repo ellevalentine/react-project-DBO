@@ -464,6 +464,123 @@ class TransactionsController < ApplicationController
 
 
 
+    def percentChange
+
+
+        
+
+         # should be have params of: user_id, year wanted, month wanted 
+        
+            #grab current user transations 
+            user_transactions = Transaction.all.where(user_id: params[:user_id])
+            # grab the transactions from the selected year - from the array of transations from the selected year - map over and give an array of amounts from that year and sum 
+ 
+            year_2019_transactions = user_transactions.select{|t| t.date.split("-")[0] === "2019"}
+            year_2018_transactions = user_transactions.select{|t| t.date.split("-")[0] === "2019"}
+
+ 
+
+        months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" ]
+            
+        selected_month_2019 = {}
+        selected_month_2018 = {}
+
+
+        months.each do |month|
+            selected_month_2019[month] =  year_2019_transactions.select { |t| t.date.split("-")[1] == month}
+        end
+
+        months.each do |month|
+            selected_month_2018[month] =  year_2018_transactions.select { |t| t.date.split("-")[1] == month}
+        end
+
+
+
+        jan_total_2019 = selected_month_2019['01'].map {|t| t.amount}.sum
+        feb_total_2019 = selected_month_2019['02'].map {|t| t.amount}.sum
+        mar_total_2019 = selected_month_2019['03'].map {|t| t.amount}.sum
+        apr_total_2019 = selected_month_2019['04'].map {|t| t.amount}.sum
+        may_total_2019 = selected_month_2019['05'].map {|t| t.amount}.sum
+        jun_total_2019 = selected_month_2019['06'].map {|t| t.amount}.sum
+        jul_total_2019 = selected_month_2019['07'].map {|t| t.amount}.sum
+        aug_total_2019 = selected_month_2019['08'].map {|t| t.amount}.sum
+        sep_total_2019 = selected_month_2019['09'].map {|t| t.amount}.sum
+        oct_total_2019 = selected_month_2019['10'].map {|t| t.amount}.sum
+        nov_total_2019 = selected_month_2019['11'].map {|t| t.amount}.sum
+        dec_total_2019 = selected_month_2019['12'].map {|t| t.amount}.sum
+
+        jan_total_2018 = selected_month_2018['01'].map {|t| t.amount}.sum
+        feb_total_2018 = selected_month_2018['02'].map {|t| t.amount}.sum
+        mar_total_2018 = selected_month_2018['03'].map {|t| t.amount}.sum
+        apr_total_2018 = selected_month_2018['04'].map {|t| t.amount}.sum
+        may_total_2018 = selected_month_2018['05'].map {|t| t.amount}.sum
+        jun_total_2018 = selected_month_2018['06'].map {|t| t.amount}.sum
+        jul_total_2018 = selected_month_2018['07'].map {|t| t.amount}.sum
+        aug_total_2018 = selected_month_2018['08'].map {|t| t.amount}.sum
+        sep_total_2018 = selected_month_2018['09'].map {|t| t.amount}.sum
+        oct_total_2018 = selected_month_2018['10'].map {|t| t.amount}.sum
+        nov_total_2018 = selected_month_2018['11'].map {|t| t.amount}.sum
+        dec_total_2018 = selected_month_2019['12'].map {|t| t.amount}.sum
+
+        # difference
+
+        jan_increase = (jan_total_2019.to_f)-(jan_total_2018.to_f)
+        jan_percent_change = ((jan_increase).to_f/(jan_total_2018).to_f)*(100)
+
+        feb_increase = (feb_total_2019.to_f)-(feb_total_2018.to_f)
+        feb_percent_change = ((feb_increase).to_f/(feb_total_2018).to_f)*(100)
+
+        mar_increase = (mar_total_2019.to_f)-(mar_total_2018.to_f)
+        mar_percent_change = ((mar_increase).to_f/(mar_total_2018).to_f)*(100)
+
+        apr_increase = (apr_total_2019.to_f)-(apr_total_2018.to_f)
+        apr_percent_change = ((apr_increase).to_f/(apr_total_2018).to_f)*(100)
+
+        may_increase = (may_total_2019.to_f)-(may_total_2018.to_f)
+        may_percent_change = ((may_increase).to_f/(may_total_2018).to_f)*(100)
+
+        jun_increase = (jun_total_2019.to_f)-(jun_total_2018.to_f)
+        jun_percent_change = ((jun_increase).to_f/(jun_total_2018).to_f)*(100)
+
+        jul_increase = (jul_total_2019.to_f)-(jul_total_2018.to_f)
+        jul_percent_change = ((jul_increase).to_f/(jul_total_2018).to_f)*(100)
+
+        # aug_increase = (aug_total_2019.to_f)-(aug_total_2018.to_f)
+        # aug_percent_change = ((aug_increase).to_f/(aug_total_2018).to_f)*(100)
+
+        # sep_increase = (sep_total_2019.to_f)-(sep_total_2018.to_f)
+        # sep_percent_change = ((sep_increase).to_f/(sep_total_2018).to_f)*(100)
+
+        # oct_increase = (oct_total_2019.to_f)-(oct_total_2018.to_f)
+        # oct_percent_change = ((oct_increase).to_f/(oct_total_2018).to_f)*(100)
+
+        # nov_increase = (nov_total_2019.to_f)-(nov_total_2018.to_f)
+        # nov_percent_change = ((nov_increase).to_f/(nov_total_2018).to_f)*(100)
+
+        # dec_increase = (dec_total_2019.to_f)-(dec_total_2018.to_f)
+        # dec_percent_change = ((dec_increase).to_f/(dec_total_2018).to_f)*(100)
+
+        render json: {
+            jan: jan_percent_change,
+            feb: feb_percent_change, 
+            mar: mar_percent_change, 
+            apr: apr_percent_change, 
+            may: may_percent_change, 
+            jun: jun_percent_change, 
+            jul: jul_percent_change, 
+            # aug: aug_percent_change, 
+            # sep: sep_percent_change, 
+            # oct: oct_percent_change, 
+            # nov: nov_percent_change, 
+            # dec: dec_percent_change
+        }
+
+    end
+
+
+
+
+
 
 
     

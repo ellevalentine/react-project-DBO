@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 
 import Dialog from '@material-ui/core/Dialog';
 import API from "../services/api"
+import swal from "sweetalert";
 
 
 
@@ -18,11 +19,19 @@ class DeletePotDashboard extends Component {
 
   deletePot = () => {
 
-        alert("deleted")
+    API.deleteSavingPot(this.props.item.id)
+    .then( this.props.deleteSavingPot() )
 
-        API.deleteSavingPot(this.props.item.id)
-     
   }
+
+
+
+
+
+
+
+    
+
 
   render() {
 

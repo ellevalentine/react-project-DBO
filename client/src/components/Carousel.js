@@ -1,6 +1,6 @@
 
   import React from "react";
-  import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
+  import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBContainer } from
   "mdbreact";
   import OverAllChartsPage from "../components/TransPieChart"
   import OverAllBarChart from "../components/OverAllBarChart"

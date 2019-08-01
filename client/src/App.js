@@ -14,7 +14,7 @@ import SignUpForm from './pages/SignUpForm'
 
 //grab the validate function from the api.js to use 
 import {validate} from './services/api'
-import {getTransactions} from './services/api'
+// import {getTransactions} from './services/api'
 import {getUsers} from './services/api'
 import {getAllStocks} from './services/api'
 
@@ -23,6 +23,8 @@ import {getAllStocks} from './services/api'
 
 import {allTransactionsCategory} from '../src/services/GraphApis' 
 import {MonthsCategory} from "../src/services/GraphApis"
+
+// import {PercentChangeMonthly} from "../src/services/GraphApis"
 
 
 
@@ -49,8 +51,43 @@ class App extends Component {
     allstocks:[],
     test: [],
     sum: [],
-    total_category: []
+    total_category: [],
+    // month_percent_change: []
   }
+
+  updateSavingPots = savingPots => {
+     this.setState({ savingPots })
+  }
+
+
+  deleteSavingPot = () => {
+    getUsers(this.state.user.id)
+    .then( data => this.setState({savingPots: data.saving_pots}))
+  }
+  
+
+  updateTransactions = (transactions, thenFetchDataForGraphs = false) => {
+    this.setState({ transactions }, () => {
+      if (thenFetchDataForGraphs) {
+        MonthsCategory(this.state.user.id, "2019")
+    .then( data => {
+            this.setState({month_categories_2019: data})
+         } )
+
+    allTransactionsCategory(this.state.user.id)
+    .then( data => {
+        this.setState({total_category: data})
+      } )
+ 
+     MonthsCategory(this.state.user.id, "2018")
+          .then( data => {
+                  this.setState({month_categories_2018: data})
+               } )
+
+
+      }
+    })
+ }
 //------------------------------------------------------------------------------------------------------------------
 // sign in
 //------------------------------------------------------------------------------------------------------------------
@@ -80,11 +117,8 @@ class App extends Component {
           .then( data => {
                   this.setState({month_categories_2018: data})
                } )
-        
-    // this.setState({transactions: user.transactions})
-    // this.setState({savingPots: user.saving_pots})
-    // this.setState({allstocks: user.allstocks})
-    // this.setState({ username: user.username })
+
+ 
 
     localStorage.setItem('token', user.token) // add token
     
@@ -148,12 +182,13 @@ signout = () => {
     return (
       <div className="App">
         <Header username={username} signout={signout}/> 
+        
         <Switch> 
-          <Route exact path='/' component={props => <HomePage user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } /> />
-          <Route path='/signin' component={props => <SignInForm signin={signin} {...props}/>} />
-          <Route path='/inventory' component={props => <Inventory month_categories_2018={this.state.month_categories_2018} month_categories_2019={this.state.month_categories_2019} total_category={this.state.total_category} user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
-          <Route path='/signup' component={props => <SignUpForm signin={signin} {...props}/>} />
-          <Route component={() => <h1>Page not found.</h1>} />
+          {/* <Route exact path='/' render={props => <HomePage user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } /> /> */}
+          <Route path='/signin' render={props => <SignInForm signin={signin} {...props}/>} />
+          <Route path='/inventory' render={props => <Inventory deleteSavingPot={this.deleteSavingPot} updateTransactions={this.updateTransactions} updatePots={this.updateSavingPots} month_categories_2018={this.state.month_categories_2018} month_categories_2019={this.state.month_categories_2019} total_category={this.state.total_category} user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
+          <Route path='/signup' render={props => <SignUpForm signin={signin} {...props}/>} />
+          <Route render={() => <h1>Page not found.</h1>} />
         </Switch>
       </div>
     )

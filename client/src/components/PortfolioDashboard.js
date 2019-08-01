@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
 import Dialog from '@material-ui/core/Dialog';
 
@@ -31,7 +31,7 @@ class PortfolioDashBoard extends Component {
           <Dialog open={this.state.show} onClose={ () => {this.setState({show: false})}}>
             <p> helloooooooooooo </p>
           </Dialog>
-          <Button variant="outlined" color="success" type="button" onClick={this.handleClick}>
+          <Button variant="outlined" type="button" onClick={this.handleClick}>
             View Portfolio 
           </Button>
           <br/>

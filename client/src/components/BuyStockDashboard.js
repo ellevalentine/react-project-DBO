@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import { makeStyles } from '@material-ui/core/styles';
+// import ReactDOM from "react-dom";
+// import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button'
 
@@ -29,7 +29,7 @@ class BuyStockDashboard extends Component {
           <Dialog open={this.state.show} onClose={ () => {this.setState({show: false})}}>
             <p>Buy stock</p>
           </Dialog>
-          <Button variant="outlined" color="dark" type="button" onClick={this.handleClick}>
+          <Button variant="outlined" type="button" onClick={this.handleClick}>
             BUY
           </Button>
         </main>

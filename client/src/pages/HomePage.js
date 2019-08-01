@@ -3,7 +3,7 @@
 //------------------------------------------------------------------------------------------------------------------
  
 import React from 'react'
-import CarouselPage from "../components/Carousel"
+// import CarouselPage from "../components/Carousel"
 
 // import { Link } from 'react-router-dom'
 

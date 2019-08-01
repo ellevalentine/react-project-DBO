@@ -128,10 +128,30 @@ export function MonthsCategory(user_id, year) {
   }
 
 
+//------------------------------------------------------------------------------------------------------------------
+// month percent age change
+//------------------------------------------------------------------------------------------------------------------
+ 
+export function PercentChangeMonthly(user_id) {
+
+  return fetch("http://localhost:3000/month_percent_change", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: user_id
+    })
+  }).then(resp => resp.json()); //
+}
+
+
+
+  
 
 
 //------------------------------------------------------------------------------------------------------------------
 // EXPORT
 //------------------------------------------------------------------------------------------------------------------
 
-export default {allTransactionsSum, allTransactionsCategory, sumOfEachYear, EachYearCategory, EachMonthSum, MonthsCategory} 
+export default {allTransactionsSum, allTransactionsCategory, sumOfEachYear, EachYearCategory, EachMonthSum, MonthsCategory, PercentChangeMonthly} 
