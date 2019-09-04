@@ -339,3 +339,37 @@ a:active {
   display: table;
   clear: both;
 }
+
+.month-card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.month-card {
+  border: black solid 1px;
+  border-radius: 0.5rem;
+  text-align: center;
+  box-shadow: 0 0rem 0.5rem;
+  margin: auto;
+}
+
+.month-name {
+  background: #e1e1e1;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom: solid black 1px;
+  padding: 1rem;
+}
+
+.month-change {
+  padding: 1rem;
+}
+
+.month-change.up {
+  color: red;
+}
+
+.month-change.down {
+  color: green;
+}

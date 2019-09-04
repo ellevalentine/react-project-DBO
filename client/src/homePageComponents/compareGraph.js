@@ -1,6 +1,7 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
+import MonthCard from "./MonthCard";
 
 class LineChart extends React.Component {
   state = {
@@ -128,57 +129,15 @@ class LineChart extends React.Component {
             <hr/>
 
         <p> <u>Difference in Spending from previous year by month:</u ></p>
-            <div className="row">
-                <div className="column">
-                
-                <strong>Jan</strong>: { Math.round( (((this.props.month_sum_2019.jan) - (this.props.month_sum_2018.jan)) / (this.props.month_sum_2018.jan))*10000)/100} %
-               <br/><br/>
-
-               <strong>Mar</strong>: { Math.round( (((this.props.month_sum_2019.mar) - (this.props.month_sum_2018.mar)) / (this.props.month_sum_2018.mar))*10000)/100} %
-               <br/><br/>
-
-               <strong>May</strong>: { Math.round( (((this.props.month_sum_2019.may) - (this.props.month_sum_2018.may)) / (this.props.month_sum_2018.may))*10000)/100} %
-               <br/><br/>
-
-               <strong>Jul</strong>: { Math.round( (((this.props.month_sum_2019.jul) - (this.props.month_sum_2018.jul)) / (this.props.month_sum_2018.jul))*10000)/100} %
-               <br/><br/>
-
-               <strong>Sep</strong>: -
-                {/* { Math.round( (((this.props.month_sum_2019.sep) - (this.props.month_sum_2018.sep)) / (this.props.month_sum_2018.sep))*10000)/100} % */}
-               <br/><br/>
-
-               <strong>Nov</strong>: -
-               {/* { Math.round( (((this.props.month_sum_2019.nov) - (this.props.month_sum_2018.nov)) / (this.props.month_sum_2018.nov))*10000)/100} % */}
-               <br/><br/>
-                
-                </div>
-
-                <div className="column">
-
-                <strong>Feb</strong>: { Math.round( (((this.props.month_sum_2019.feb) - (this.props.month_sum_2018.feb)) / (this.props.month_sum_2018.feb))*10000)/100} %
-               <br/><br/>
-
-               <strong>Apr</strong>: { Math.round( (((this.props.month_sum_2019.apr) - (this.props.month_sum_2018.apr)) / (this.props.month_sum_2018.apr))*10000)/100} %
-               <br/><br/>
-
-               <strong>Jun</strong>: { Math.round( (((this.props.month_sum_2019.jun) - (this.props.month_sum_2018.jun)) / (this.props.month_sum_2018.jun))*10000)/100} %
-               <br/><br/>
-
-               <strong>Aug</strong>:   
-                { Math.round( (((this.props.month_sum_2019.aug) - (this.props.month_sum_2018.aug)) / (this.props.month_sum_2018.aug))*10000)/100} %
-               <br/><br/>
-
-               <strong>Oct</strong>: - 
-                {/* { Math.round( (((this.props.month_sum_2019.oct) - (this.props.month_sum_2018.oct)) / (this.props.month_sum_2018.oct))*10000)/100} % */}
-               <br/><br/>
-
-               <strong>Dec </strong>:-
-                {/* { Math.round( (((this.props.month_sum_2019.dec) - (this.props.month_sum_2018.dec)) / (this.props.month_sum_2018.dec))*10000)/100} % */}
-
-                
-                
-                 </div>
-
+            <div className="month-card-container">
+                {
+                  ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug'].map(month => {
+                    return (
+                      <MonthCard sum18={this.props.month_sum_2018[month]} sum19={this.props.month_sum_2019[month]} month={month} key={month} />
+                    )
+                  })
+                }
+  
             </div>
 
 
