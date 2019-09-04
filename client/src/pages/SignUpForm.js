@@ -3,12 +3,7 @@
 //------------------------------------------------------------------------------------------------------------------
  
 import React from 'react'
-
-// import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-
-// import { signin } from '../services/api'
-// import { Link } from 'react-router-dom'
 import { createUser } from '../services/api'
 
 
@@ -28,23 +23,16 @@ class SignUpForm extends React.Component {
 
   handleSubmit = event => {
   event.preventDefault()
-  
-  // let name = event.target.username.value
-  // let passord = event.target.password.value
 
   createUser(event.target.username.value, event.target.password.value)
- 
-
-    
+     
   }
 
 
 // render component
 //------------------------------------------------------------------------------------------------------------------
   render () {
-    // const { username, password } = this.state
     const { handleSubmit } = this
-
     return (
       <div className="signInform" >
         <h3>Sign Up:</h3> <br/>

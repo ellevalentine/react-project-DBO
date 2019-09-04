@@ -18,20 +18,10 @@ import {validate} from './services/api'
 import {getUsers} from './services/api'
 import {getAllStocks} from './services/api'
 
-
 //graphs 
 
 import {allTransactionsCategory} from '../src/services/GraphApis' 
 import {MonthsCategory} from "../src/services/GraphApis"
-
-// import {PercentChangeMonthly} from "../src/services/GraphApis"
-
-
-
-
-
-
-
 
 import './App.css'
 
@@ -158,21 +148,7 @@ signout = () => {
    }
  }
 
-
- //total categories  CALL THIS FUNCITON 
-
-//  setTransactionsTotalCategory = () => {
-//    debugger
-      
-//   allTransactionsCategory(this.state.user.id)
-//     .then( data => {
-//         this.setState({total_category: data})
-//       } )
-
-     
-//     }
- //------------------------------------------------------------------------------------------------------------------
-
+//------------------------------------------------------------------------------------------------------------------
 // render component
 //------------------------------------------------------------------------------------------------------------------
   render() {
@@ -184,7 +160,6 @@ signout = () => {
         <Header username={username} signout={signout}/> 
         
         <Switch> 
-          {/* <Route exact path='/' render={props => <HomePage user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } /> /> */}
           <Route path='/signin' render={props => <SignInForm signin={signin} {...props}/>} />
           <Route path='/inventory' render={props => <Inventory deleteSavingPot={this.deleteSavingPot} updateTransactions={this.updateTransactions} updatePots={this.updateSavingPots} month_categories_2018={this.state.month_categories_2018} month_categories_2019={this.state.month_categories_2019} total_category={this.state.total_category} user={user} allstocks={allstocks} savingPots={savingPots} transactions={transactions} username={username} {...props}/> } />
           <Route path='/signup' render={props => <SignUpForm signin={signin} {...props}/>} />
@@ -193,10 +168,9 @@ signout = () => {
       </div>
     )
   }
-//------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------
 
 }
-
 
 //------------------------------------------------------------------------------------------------------------------
 // EXPORT

@@ -1,12 +1,7 @@
 import React from "react";
 import Moment from "react-moment";
 import 'moment-timezone';
-
 import ChartsPage from '../components/SavingPotPieChart'
-
-
-
-
 
 
 const PotDetails = props => {
@@ -122,27 +117,8 @@ const neededMoney = props.item.goal
                     <strong>Time left:</strong> <Moment duration={currentCombinded}
                     date={combinded}
                     />
-                    <hr/>
-                    <strong>Options:</strong>
-                  
-                  
-                    <i />
-
-                    <form  >
-
-                    <select name='potSchedule' id="mySelect" >
-                      <option value={"daily-"+perDayRoundedUp}>Daily</option>
-                      <option value={"weekly-"+perWeekRoundedUp}  >Weekly</option>
-                      <option value={"monthly-"+perMonthRoundedUp} >Montly</option>
-                    </select>
-                    
-                    <button onClick={()=>{alert("payment confrimed!")}}>
-                      Confirm
-                    </button>
-
-                    </form>
-                    
-                    <hr/>
+                
+              <hr/>
 
                    <br/>
  

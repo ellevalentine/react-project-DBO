@@ -3,12 +3,9 @@
 //------------------------------------------------------------------------------------------------------------------
  
 import React from 'react'
-
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-
 import { signin } from '../services/api'
-// import { Link } from 'react-router-dom'
 
 
 //------------------------------------------------------------------------------------------------------------------
@@ -32,11 +29,9 @@ class SignInForm extends React.Component {
       if (data.error){
         alert(data.error)
       } else { 
-        // debugger - use to check what data was been passed
         this.props.signin(data)
       }
     })
-    // console.log(this.state)
   }
 
 // handle chaneg function 
@@ -52,6 +47,7 @@ handleChange = event =>
     const { handleChange, handleSubmit } = this
 
     return (
+      <div>
       <div className="signInform">
         <TextField
           id='usernameInput'
@@ -77,6 +73,12 @@ handleChange = event =>
         <Button onClick={handleSubmit} variant='contained' color='primary'>
           SUBMIT
         </Button>
+        </div>
+
+<br/>
+<br/>
+<br/>
+<br/>
 
         <img
               alt="oh no!"
