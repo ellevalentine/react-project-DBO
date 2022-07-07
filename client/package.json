@@ -13,7 +13,7 @@
     "material-ui-carousel": "^1.0.0",
     "mdbootstrap": "^4.8.7",
     "mdbreact": "^4.18.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.26",
     "ngx-spinner": "^8.0.3",
     "react": "^16.8.0-alpha.1",
